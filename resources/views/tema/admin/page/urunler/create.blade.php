@@ -43,6 +43,15 @@
                         <input type="text" class="form-control" name="fyt"  />
                     </div>
                     <div class="form-group">
+                        <label>Renk<span class="text-danger">*</span></label>
+                        <select name="renkid" class="form-control">
+                            <option value="#">Renk Seçiniz</option>
+                            @foreach($renk as $row)
+                                <option value="{{$row->id}}">{{$row->renk_adi}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label for="exampleFormControlFile1">Ürün Görsel</label>
                         <input type="file" name="image" class="form-control-file" id="exampleFormControlFile1">
                     </div>

@@ -11,11 +11,10 @@ Route::group(["namespace"=>"admin","prefix"=>"admin","as" => "admin.","middlewar
 
     Route::post('/cikis', 'cikiscontroller@index')->name('cikis');
 
-
     // Ürünler Route** //
 
+    Route::group(["prefix"=>"urunler","as"=>"urunler."],function() {
 
-    Route::group(["prefix"=>"urunler","as"=>"urunler."],function(){
         Route::get  ( "/"                 , "urunler@index"    )   ->name("index");
         Route::get  ( "/ekleForm"         , "urunler@create"   )   ->name("ekleForm");
         Route::post ( "/ekle"             , "urunler@store"    )   ->name("ekle.post");
@@ -27,6 +26,19 @@ Route::group(["namespace"=>"admin","prefix"=>"admin","as" => "admin.","middlewar
         Route::get  ( "/status/{id}"      , "urunler@status"   )   ->name("status");
 
     });
+
+    // Renkler Route** /
+
+    Route::group(["prefix"=>"renkler","as"=>"renkler."],function() {
+
+        Route::get  ( "/"                 , "renkler@index"    )   ->name("index");
+        Route::get  ( "/ekleForm"         , "renkler@create"   )   ->name("ekleForm");
+        Route::post ( "/ekle"             , "renkler@store"    )   ->name("ekle.post");
+
+
+    });
+
+
 
 
 

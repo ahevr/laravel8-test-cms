@@ -4,10 +4,10 @@
         <div class="card card-custom gutter-b">
             <div class="card-header">
                 <div class="card-title">
-                    <h3 class="card-label">Ürünler Listesi</h3>
+                    <h3 class="card-label">Renkler Listesi</h3>
                 </div>
                 <div class="card-toolbar">
-                    <a href="{{route("admin.urunler.ekleForm")}}" class="btn btn-primary font-weight-bolder">
+                    <a href="{{route("admin.renkler.ekleForm")}}" class="btn btn-primary font-weight-bolder">
                 <span class="svg-icon svg-icon-md">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -26,12 +26,7 @@
                             <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Görsel</th>
-                                <th scope="col">İsim</th>
-                                <th scope="col">Açıklama</th>
-                                <th scope="col">Fyt</th>
                                 <th scope="col">Renk</th>
-                                <th scope="col">Durumu</th>
                                 <th scope="col">İşlemler</th>
                             </tr>
                             </thead>
@@ -39,33 +34,14 @@
                             @foreach($data as $row)
                                 <tr>
                                     <th scope="row">{{$row->id}}</th>
-                                    <td><img src="{{asset($row->image)}}" width="150" alt=""> </td>
-                                    <td>{{$row->title}}</td>
-                                    <td>{{$row->desc}}</td>
-                                    <td>{{$row->fyt}}</td>
-                                    <td>{{$row->renkid}}</td>
-                                    <td>
-                                        <?php if ($row->isActive == "1"){ ?>
-                                            <a href="{{route("admin.urunler.status",$row->id)}}" class="btn btn-sm btn-success">Aktif</a>
-                                        <?php } else { ?>
-                                            <a href="{{route("admin.urunler.status",$row->id)}}" class="btn btn-sm btn-danger">Pasif</a>
-                                        <?php  } ?>
-                                    </td>
+                                    <td>{{$row->renk_adi}}</td>
                                     <td>
                                         <button
-                                            data-url="{{route("admin.urunler.sil",$row->id)}}"
-                                            class="btn btn-sm btn-danger silButton">
+                                                data-url="{{route("admin.urunler.sil",$row->id)}}"
+                                                class="btn btn-sm btn-danger silButton">
                                             <i class="flaticon-delete"></i></i>
                                             Sil
                                         </button>
-                                        <a href="{{route("admin.urunler.duzenleForm",$row->id)}}"
-                                           class="btn btn-sm btn-primary"><i class="flaticon-edit"></i>
-                                            Düzenle
-                                        </a>
-                                        <a href="{{route("admin.urunler.galeriForm",$row->id)}}"
-                                           class="btn btn-sm btn-warning"><i class="flaticon2-image-file"></i>
-                                            Galeri
-                                        </a>
                                     </td>
                                 </tr>
                             @endforeach

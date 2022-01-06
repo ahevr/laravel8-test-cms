@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Helper\imageUpload;
 use App\Helper\mHelper;
 use App\Http\Controllers\Controller;
+use App\Models\Admin\RenklerModel;
 use App\Models\Admin\UrunlerImageModel;
 use App\Models\Admin\UrunlerModel;
 use Illuminate\Http\Request;
@@ -14,7 +15,9 @@ class Urunler extends Controller
 
     public function index(){
 
-        $data = UrunlerModel::paginate(10);
+//        $data = RenklerModel::join("urunler","urunler.renkid","=","renkler.id")->paginate(5);
+
+        $data = UrunlerModel::paginate(5);
 
         return view("tema.admin.page.urunler.index",compact("data"));
 
@@ -22,7 +25,9 @@ class Urunler extends Controller
 
     public function create(){
 
-        return view("tema.admin.page.urunler.create");
+        $renk = RenklerModel::all();
+
+        return view("tema.admin.page.urunler.create",["renk"=>$renk]);
 
     }
 
@@ -32,12 +37,15 @@ class Urunler extends Controller
             "title" => "required|min:2|max:100",
         ]);
 
+
+
         $ekle = UrunlerModel::create([
 
             "url"      => mHelper::permalink($urunler->title),
             "title"    => $urunler->title,
             "desc"     => $urunler->desc,
             "fyt"      => $urunler->fyt,
+            "renkid"   => $urunler->renkid,
             "isActive" => 1,
             "image"    => imageUpload::singleUpload(strtolower(($urunler->title)),"urunler",$urunler->file("image")),
         ]);
