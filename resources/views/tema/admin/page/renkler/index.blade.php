@@ -37,7 +37,7 @@
                                     <td>{{$row->renk_adi}}</td>
                                     <td>
                                         <button
-                                                data-url="{{route("admin.urunler.sil",$row->id)}}"
+                                                data-url="{{route("admin.renkler.sil",$row->id)}}"
                                                 class="btn btn-sm btn-danger silButton">
                                             <i class="flaticon-delete"></i></i>
                                             Sil

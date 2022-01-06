@@ -24,6 +24,8 @@ Route::group(["namespace"=>"admin","prefix"=>"admin","as" => "admin.","middlewar
         Route::post ( "/galeri/{id}"      , "urunler@galeriSet")   ->name("galeri.post");
         Route::get  ( "/sil/{id}"         , "urunler@delete"   )   ->name("sil");
         Route::get  ( "/status/{id}"      , "urunler@status"   )   ->name("status");
+        Route::get  ( "/fotoStatus/{id}"      , "urunler@fotoStatus"   )   ->name("fotoStatus");
+        Route::get  ( "/fotoSil/{id}"     , "urunler@fotoDelete")  ->name("fotoSil");
 
     });
 
@@ -34,8 +36,7 @@ Route::group(["namespace"=>"admin","prefix"=>"admin","as" => "admin.","middlewar
         Route::get  ( "/"                 , "renkler@index"    )   ->name("index");
         Route::get  ( "/ekleForm"         , "renkler@create"   )   ->name("ekleForm");
         Route::post ( "/ekle"             , "renkler@store"    )   ->name("ekle.post");
-
-
+        Route::get  ( "/sil/{id}"         , "renkler@delete"   )   ->name("sil");
     });
 
 

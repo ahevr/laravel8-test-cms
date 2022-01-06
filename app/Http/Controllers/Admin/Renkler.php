@@ -45,4 +45,21 @@ class Renkler extends Controller{
         }
 
     }
+
+    public function delete($id){
+
+
+        $sil = RenklerModel::where("id",$id)->delete();
+
+        if ($sil){
+
+            return redirect("admin/renkler/")->with("toast_warning","Yayinevi Başarılı Bir Şekilde Silindi");
+
+        } else {
+
+            return redirect("admin/renkler")->with("toast_success","Hata Var");
+
+        }
+
+    }
 }

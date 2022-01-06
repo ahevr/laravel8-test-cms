@@ -8,7 +8,7 @@
                <span class="card-icon">
                 <i class="flaticon2-delivery-package text-primary"></i>
             </span>
-                    <h3 class="card-label">Ürün Fotoğraf Ekle</h3>
+                    <h3 class="card-label ">  <b class="text-danger">{{$galeri->title}}</b> Ürün Fotoğraf Ekle</h3>
                 </div>
             </div>
             <div class="card card-custom">
@@ -42,7 +42,7 @@
                <span class="card-icon">
                 <i class="flaticon2-delivery-package text-primary"></i>
             </span>
-                    <h3 class="card-label"> <small>{{$galeri->name}} </small> Ürünün Fotoğraf Galerisi</h3>
+                    <h3 class="card-label"> <small><b class="text-danger">{{$galeri->title}}</b> </small> Ürünün Fotoğraf Galerisi</h3>
                 </div>
             </div>
             <div class="card card-custom">
@@ -53,6 +53,8 @@
                         <thead>
                         <th>id</th>
                         <th>Görsel</th>
+                        <th>İşlemler</th>
+                        <th>Durumu</th>
                         </thead>
                         <tbody>
                         @foreach($data as $key=>$value)
@@ -63,6 +65,26 @@
                                 <td>
                                     <img width="100" src="{{asset($value->image) }}" alt="" class="img-responsive">
                                 </td>
+                                <td>
+                                    <button
+                                            data-url="{{route("admin.urunler.fotoSil",$value->id)}}"
+                                            class="btn btn-sm btn-danger silButton">
+                                        <i class="flaticon-delete"></i></i>
+                                        Sil
+                                    </button>
+                                </td>
+                                <td>
+                                    <?php if ($value->isActive == "1"){ ?>
+
+                                        <a href="{{route("admin.urunler.fotoStatus",$value->id)}}" class="btn btn-sm btn-success">Aktif</a>
+
+                                    <?php } else { ?>
+
+                                        <a href="{{route("admin.urunler.fotoStatus",$value->id)}}" class="btn btn-sm btn-danger">Pasif</a>
+
+                                    <?php  } ?>
+                                </td>
+
                             </tr>
 
                         @endforeach

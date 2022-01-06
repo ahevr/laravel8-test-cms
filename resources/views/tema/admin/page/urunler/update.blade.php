@@ -5,7 +5,7 @@
         <div class="card card-custom">
             <div class="card-header">
                 <h3 class="card-title">
-                    <b class="text-danger">{{$data->name}}</b>    &nbsp; Kaydını Düzenliyorsunuz
+                    <b class="text-danger">{{$data->title}}</b>    &nbsp; Kaydını Düzenliyorsunuz
                 </h3>
                 <div class="card-toolbar">
                     <div class="example-tools justify-content-center">

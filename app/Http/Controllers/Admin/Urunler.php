@@ -93,6 +93,36 @@ class Urunler extends Controller
         }
 
     }
+    public function fotoStatus(Request $urunler,$id){
+
+        $status = UrunlerImageModel::select("isActive")->where("id",$id)->first();
+
+
+        if ($status->isActive == "1") {
+
+            $isActive = "0";
+
+        } else {
+
+            $isActive = "1";
+
+        }
+
+        $durum = array("isActive"=>$isActive);
+
+
+        UrunlerImageModel::where("id",$id)->update($durum);
+
+        if ($durum){
+
+            return redirect("admin/urunler")->with("toast_success","Durum Değiştirme Başarılı");
+
+        } else {
+
+            return redirect("admin/urunler")->with("toast_error","Hata Var");
+        }
+
+    }
 
     public function delete($id){
 
@@ -178,20 +208,36 @@ class Urunler extends Controller
 
         $ekle = UrunlerImageModel::create([
             "urunler_id"  => $urunler->id,
+            "isActive"    => 1,
             "image" => imageUpload::singleUpload(strtolower(($urunler->id)),"urunler",$urunler->file("image")),
 
         ]);
 
         if ($ekle){
 
-            return redirect("admin/urunler")->with("toast_success","Yazarlar Başarılı Bir Şekilde Eklendi");
+            return redirect("admin/urunler/galeriForm/$id")->with("toast_success","Yazarlar Başarılı Bir Şekilde Eklendi");
 
         } else {
 
             return redirect("admin/urunler")->with("toast_error","Hata Var");
         }
 
+    }
 
+    public function fotoDelete($id){
+
+
+        $sil = UrunlerImageModel::where("id",$id)->delete();
+
+        if ($sil){
+
+            return redirect("admin/urunler/galeriForm/$id")->with("toast_warning","Yayinevi Başarılı Bir Şekilde Silindi");
+
+        } else {
+
+            return redirect("admin/urunler")->with("toast_success","Hata Var");
+
+        }
 
     }
 
