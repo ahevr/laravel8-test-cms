@@ -31,6 +31,15 @@
                         <input type="text" class="form-control" name="fyt"  value="{{$data->fyt}}"/>
                     </div>
                     <div class="form-group">
+                        <label>Renk<span class="text-danger">*</span></label>
+                        <select name="renkid" class="form-control">
+                            <option value="#">Renk Seçiniz</option>
+                            @foreach($renk as $row)
+                                <option @if($row->id === $data->renkid) selected @endif value="{{$row->id}}">{{$row->renk_adi}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label>Foto <span class="text-danger">*</span></label>
                         <img src="{{asset($data->image) }}" width="150" height="150" alt="">
                         <input type="file" name="image" class="form-control">

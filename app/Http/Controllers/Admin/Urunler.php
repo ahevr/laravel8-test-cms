@@ -115,11 +115,13 @@ class Urunler extends Controller
 
     public function edit($id){
 
+        $renk = RenklerModel::all();
+
         $data = UrunlerModel::where("id",$id)->first();
 
         if ($data){
 
-            return view("tema.admin.page.urunler.update",compact("data"));
+            return view("tema.admin.page.urunler.update",compact("data","renk"));
 
         } else {
 
@@ -144,6 +146,7 @@ class Urunler extends Controller
             "desc"     => $urunler->desc,
             "fyt"      => $urunler->fyt,
             "isActive" => 1,
+            "renkid"   => $urunler->renkid,
             "image"    => imageUpload::singleUploadUpdate(strtolower(($urunler->name)),"yazarlar",$urunler->file("image"),$data,"image"),
         ]);
 
