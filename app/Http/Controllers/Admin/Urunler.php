@@ -93,6 +93,7 @@ class Urunler extends Controller
         }
 
     }
+
     public function fotoStatus(Request $urunler,$id){
 
         $status = UrunlerImageModel::select("isActive")->where("id",$id)->first();
@@ -231,7 +232,7 @@ class Urunler extends Controller
 
         if ($sil){
 
-            return redirect("admin/urunler/galeriForm/$id")->with("toast_warning","Yayinevi Başarılı Bir Şekilde Silindi");
+            return redirect("admin/urunler")->with("toast_warning","Ürün Fotoğrafı Başarılı Bir Şekilde Silindi");
 
         } else {
 
@@ -240,6 +241,8 @@ class Urunler extends Controller
         }
 
     }
+
+
 
 
 

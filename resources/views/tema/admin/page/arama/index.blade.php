@@ -1,7 +1,8 @@
 @extends("tema.master")
 @section("content")
-    @include("tema.admin.page.inc.page_style")
-    @include("tema.admin.page.inc.page_script")
+
+
+
     <div class="col-md-12">
         <div class="card card-custom gutter-b">
             <div class="card-header">
@@ -18,24 +19,15 @@
                         <path d="M8.8012943,7.00241953 C9.83837775,5.20768121 11.7781543,4 14,4 C17.3137085,4 20,6.6862915 20,10 C20,12.2218457 18.7923188,14.1616223 16.9975805,15.1987057 C16.9991904,15.1326658 17,15.0664274 17,15 C17,10.581722 13.418278,7 9,7 C8.93357256,7 8.86733422,7.00080962 8.8012943,7.00241953 Z" fill="#000000" opacity="0.3"></path>
                     </g>
                     </svg>
-                </span>Yeni Kayıt</a>
+                </span>Ysi Kayıt</a>
+                    <p>sdas</p>
+
+
+
+
                 </div>
             </div>
             <div class="card-body">
-                <form action="{{route("admin.urunler.search")}}" >
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group float-right">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" name="keyword" placeholder="Ürün Adı Ara...">
-                                    <div class="input-group-append">
-                                        <button  class="btn btn-primary">Ara!</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
                 <div class="example mb-10">
                     <div class="example-preview">
                         <table class="table">
@@ -62,15 +54,15 @@
                                     <td>{{$row->renkid}}</td>
                                     <td>
                                         <?php if ($row->isActive == "1"){ ?>
-                                            <a href="{{route("admin.urunler.status",$row->id)}}" class="btn btn-sm btn-success">Aktif</a>
+                                        <a href="{{route("admin.urunler.status",$row->id)}}" class="btn btn-sm btn-success">Aktif</a>
                                         <?php } else { ?>
-                                            <a href="{{route("admin.urunler.status",$row->id)}}" class="btn btn-sm btn-danger">Pasif</a>
+                                        <a href="{{route("admin.urunler.status",$row->id)}}" class="btn btn-sm btn-danger">Pasif</a>
                                         <?php  } ?>
                                     </td>
                                     <td>
                                         <button
-                                            data-url="{{route("admin.urunler.sil",$row->id)}}"
-                                            class="btn btn-sm btn-danger silButton">
+                                                data-url="{{route("admin.urunler.sil",$row->id)}}"
+                                                class="btn btn-sm btn-danger silButton">
                                             <i class="flaticon-delete"></i></i>
                                             Sil
                                         </button>
@@ -88,28 +80,9 @@
                             </tbody>
                         </table>
                         {{ $data->links() }}
-
                     </div>
-                        <?php if (count($data) > 0) { ?>
-                            <div class="row float-right">
-                                <p>
-                                  <b><?php echo ($data->count()."</b>");?> Kayıt Bulundu !
-                                </p>
-                            </div>
-                        <?php } else { ?>
-                            <div class="com">
-                                <script>
-                                    iziToast.error({
-                                        title: 'Kayıt Bulunamadı !',
-                                        message: 'Herhangi Bir Kayıt Yok Tekrar Deneyiniz',
-                                        position : "topCenter"
-                                    });
-                                </script>
-                            </div>
-                         <?php  } ?>
                 </div>
             </div>
         </div>
     </div>
-
 @endsection

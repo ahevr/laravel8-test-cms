@@ -8,4 +8,5 @@
 <link href="{{asset("tema/admin")}}/css/themes/layout/header/menu/light.css" rel="stylesheet" type="text/css" />
 <link href="{{asset("tema/admin")}}/css/themes/layout/brand/dark.css" rel="stylesheet" type="text/css" />
 <link href="{{asset("tema/admin")}}/css/themes/layout/aside/dark.css" rel="stylesheet" type="text/css" />
+<link href="{{asset("tema/admin")}}/toastr/iziToast.min.css" rel="stylesheet" type="text/css" />
 <link rel="shortcut icon" href="{{asset("tema/admin")}}/media/logos/favicon.ico" />

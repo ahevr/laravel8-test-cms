@@ -1,6 +1,10 @@
 @extends("tema.master")
 @section("content")
+    @include("tema.admin.page.inc.page_style")
+    @include("tema.admin.page.inc.page_script")
     <pre>
+
+
 
     <div class="container">
         <div class="row">
@@ -23,4 +27,9 @@
     </div>
 
 </pre>
+
+
+
+
+
 @endsection

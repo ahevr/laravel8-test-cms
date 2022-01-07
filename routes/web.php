@@ -5,6 +5,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 
 
+
 Route::group(["namespace"=>"admin","prefix"=>"admin","as" => "admin.","middleware"=>["auth"]],function (){
 
     Route::get("/","dashboardcontroller@index")->name("index");
@@ -26,6 +27,7 @@ Route::group(["namespace"=>"admin","prefix"=>"admin","as" => "admin.","middlewar
         Route::get  ( "/status/{id}"      , "urunler@status"   )   ->name("status");
         Route::get  ( "/fotoStatus/{id}"      , "urunler@fotoStatus"   )   ->name("fotoStatus");
         Route::get  ( "/fotoSil/{id}"     , "urunler@fotoDelete")  ->name("fotoSil");
+        Route::get  ( "/search"     , "search@index")  ->name("search");
 
     });
 

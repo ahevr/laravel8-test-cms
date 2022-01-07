@@ -5,6 +5,7 @@
 <script src="{{asset("tema/admin")}}/js/scripts.bundle.js"></script>
 <script src="{{asset("tema/admin")}}/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
 <script src="{{asset("tema/admin")}}/js/pages/widgets.js"></script>
+<script src="{{asset("tema/admin")}}/toastr/iziToast.min.js"></script>
 <script>
     $(".silButton").click(function () {
         $(".silButton").click(function () {
@@ -46,6 +47,3 @@
 
 </script>
 
-<script>
-
-</script>
