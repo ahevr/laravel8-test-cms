@@ -52,7 +52,7 @@ class Urunler extends Controller
 
         if ($ekle){
 
-            return redirect("admin/urunler")->with("toast_success","Yazarlar Başarılı Bir Şekilde Eklendi");
+            return redirect("admin/urunler")->with("toast_success","Ürünler Başarılı Bir Şekilde Eklendi");
 
         } else {
 
@@ -132,7 +132,7 @@ class Urunler extends Controller
 
         if ($sil){
 
-            return redirect("admin/urunler")->with("toast_warning","Yayinevi Başarılı Bir Şekilde Silindi");
+            return redirect("admin/urunler")->with("toast_warning","Ürünler Başarılı Bir Şekilde Silindi");
 
         } else {
 
@@ -183,7 +183,7 @@ class Urunler extends Controller
 
         if ($update){
 
-            return redirect("admin/urunler")->with("toast_success","Yazarlar Başarılı Bir Şekilde Güncellendi");
+            return redirect("admin/urunler")->with("toast_success","Ürünler Başarılı Bir Şekilde Güncellendi");
 
         } else {
 
@@ -216,7 +216,7 @@ class Urunler extends Controller
 
         if ($ekle){
 
-            return redirect("admin/urunler/galeriForm/$id")->with("toast_success","Yazarlar Başarılı Bir Şekilde Eklendi");
+            return redirect("admin/urunler/galeriForm/$id")->with("toast_success","Ürünler'ın Fotoğrafı Başarılı Bir Şekilde Eklendi");
 
         } else {
 
