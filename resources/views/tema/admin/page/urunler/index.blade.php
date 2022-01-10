@@ -47,6 +47,7 @@
                                 <th scope="col">Açıklama</th>
                                 <th scope="col">Fyt</th>
                                 <th scope="col">Renk</th>
+                                <th scope="col">Kategori</th>
                                 <th scope="col">Durumu</th>
                                 <th scope="col">İşlemler</th>
                             </tr>
@@ -59,7 +60,8 @@
                                     <td>{{$row->title}}</td>
                                     <td>{{$row->desc}}</td>
                                     <td>{{$row->fyt}}</td>
-                                    <td>{{$row->renkid}}</td>
+                                    <td>{{$row->renk_adi}}</td>
+                                    <td>{{$row->kategori_name}}</td>
                                     <td>
                                         <?php if ($row->isActive == "1"){ ?>
                                             <a href="{{route("admin.urunler.status",$row->id)}}" class="btn btn-sm btn-success">Aktif</a>

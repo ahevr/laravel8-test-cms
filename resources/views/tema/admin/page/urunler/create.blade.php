@@ -53,6 +53,15 @@
                         </select>
                     </div>
                     <div class="form-group">
+                        <label>Kategori<span class="text-danger">*</span></label>
+                        <select name="kategori_id" class="form-control">
+                            <option value="#">Kategori Seçiniz</option>
+                            @foreach($kategori as $row)
+                                <option value="{{$row->id}}">{{$row->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label for="exampleFormControlFile1">Ürün Görsel</label>
                         <input type="file" name="image" class="form-control-file" id="exampleFormControlFile1">
                     </div>

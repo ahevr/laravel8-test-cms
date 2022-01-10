@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Helper\imageUpload;
 use App\Helper\mHelper;
 use App\Http\Controllers\Controller;
+use App\Models\Admin\KategorilerModel;
 use App\Models\Admin\RenklerModel;
 use App\Models\Admin\UrunlerImageModel;
 use App\Models\Admin\UrunlerModel;
@@ -25,9 +26,10 @@ class Urunler extends Controller
 
     public function create(){
 
-        $renk = RenklerModel::all();
+        $renk     = RenklerModel::all();
+        $kategori = KategorilerModel::all();
 
-        return view("tema.admin.page.urunler.create",["renk"=>$renk]);
+        return view("tema.admin.page.urunler.create",["renk"=>$renk,"kategori"=>$kategori]);
 
     }
 
@@ -38,6 +40,8 @@ class Urunler extends Controller
         ]);
 
 
+        $kategoriName = KategorilerModel::where("id",$urunler->input("kategori_id"))->value("name");
+        $renkName     = RenklerModel::    where("id",$urunler->input("renkid"))->value("renk_adi");
 
         $ekle = UrunlerModel::create([
 
@@ -46,6 +50,9 @@ class Urunler extends Controller
             "desc"     => $urunler->desc,
             "fyt"      => $urunler->fyt,
             "renkid"   => $urunler->renkid,
+            "kategori_id" => $urunler->kategori_id,
+            "kategori_name" => $kategoriName,
+            "renk_adi" => $renkName,
             "isActive" => 1,
             "image"    => imageUpload::singleUpload(strtolower(($urunler->title)),"urunler",$urunler->file("image")),
         ]);
@@ -148,11 +155,13 @@ class Urunler extends Controller
 
         $renk = RenklerModel::all();
 
+        $kategori = KategorilerModel::all();
+
         $data = UrunlerModel::where("id",$id)->first();
 
         if ($data){
 
-            return view("tema.admin.page.urunler.update",compact("data","renk"));
+            return view("tema.admin.page.urunler.update",compact("data","renk","kategori"));
 
         } else {
 
@@ -178,6 +187,7 @@ class Urunler extends Controller
             "fyt"      => $urunler->fyt,
             "isActive" => 1,
             "renkid"   => $urunler->renkid,
+            "kategori_id"   => $urunler->kategori_id,
             "image"    => imageUpload::singleUploadUpdate(strtolower(($urunler->name)),"yazarlar",$urunler->file("image"),$data,"image"),
         ]);
 

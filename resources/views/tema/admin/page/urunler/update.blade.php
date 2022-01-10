@@ -40,6 +40,15 @@
                         </select>
                     </div>
                     <div class="form-group">
+                        <label>Kategori<span class="text-danger">*</span></label>
+                        <select name="kategori_id" class="form-control">
+                            <option value="#">Kategori Seçiniz</option>
+                            @foreach($kategori as $row)
+                                <option @if($row->id === $data->kategori_id) selected @endif value="{{$row->id}}">{{$row->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label>Foto <span class="text-danger">*</span></label>
                         <img src="{{asset($data->image) }}" width="150" height="150" alt="">
                         <input type="file" name="image" class="form-control">
