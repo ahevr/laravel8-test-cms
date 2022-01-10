@@ -16,8 +16,6 @@ class Urunler extends Controller
 
     public function index(){
 
-//        $data = RenklerModel::join("urunler","urunler.renkid","=","renkler.id")->paginate(5);
-
         $data = UrunlerModel::paginate(5);
 
         return view("tema.admin.page.urunler.index",compact("data"));
