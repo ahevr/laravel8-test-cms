@@ -53,7 +53,7 @@ class Urunler extends Controller{
             "kategori_name" => $kategoriName,
             "renk_adi"      => $renkName,
             "isActive"      => 1,
-            "image"         => imageUpload::singleUpload(strtolower(substr($urunler->title,0,60)),"urunler",$urunler->file("image")),
+            "image"         => imageUpload::singleUpload(strtolower(substr($urunler->title,0,15)),"urunler",$urunler->file("image")),
 
         ]);
 
@@ -143,8 +143,7 @@ class Urunler extends Controller{
     public function update(Request $urunler,$id){
 
         $urunler->validate([
-            "title" => "required|min:2|max:100",
-            "desc"  => "required|min:5|max:50"
+            "title" => "required|min:2|max:255",
         ]);
         $data = UrunlerModel::where("id","=",$id)->get();
 
@@ -159,7 +158,7 @@ class Urunler extends Controller{
             "isActive" => 1,
             "renkid"   => $urunler->renkid,
             "kategori_id"   => $urunler->kategori_id,
-            "image"    => imageUpload::singleUploadUpdate(strtolower(($urunler->name)),"yazarlar",$urunler->file("image"),$data,"image"),
+            "image"    => imageUpload::singleUploadUpdate(strtolower(substr($urunler->name,0,15)),"yazarlar",$urunler->file("image"),$data,"image"),
         ]);
 
         if ($update){

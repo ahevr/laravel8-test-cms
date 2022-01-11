@@ -1,7 +1,27 @@
 @extends("tema.master")
 @section('title',  e(strip_tags(trim($data->title))) )
 @section("content")
-    {{session("toast_success")}}
+    <div class="modal" id="myModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" id="myModal" role="document">
+            <div class="modal-content" id="myModal">
+                <div class="modal-header">
+                    <h5 class="modal-title text-danger">{{$data->title}} </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Bu ekran sadece ürün ID'si : <b>{{$data->id}}</b> olan ve ürün adı : <b>{{$data->title}}</b> olan ürünün ön izlemesidir.</p>
+                    <small>Ürün bilgileri değişikliği buradan yapılmamaktadır. <br>Lütfen ilgili ürün değişikliklerini güncelleme sayfasından yapınız. </small>
+                    <br>
+                    <small> <a href="{{route("admin.urunler.duzenleForm",$data->id)}}" >Güncellemek İçin Tıklayın</a> </small>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="col-md-12">
         <div class="card card-custom">
             <div class="card-header">
@@ -79,6 +99,7 @@
                     </div>
                 </div>
                 <div class="card-footer">
+                    <a href="{{route("admin.urunler.duzenleForm",$data->id)}}" class="btn btn-secondary">Güncellemek İçin Tıklayın</a>
                     <a href="{{route("admin.urunler.index")}}" class="btn btn-secondary">Geri</a>
                 </div>
         </div>

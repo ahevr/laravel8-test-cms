@@ -70,4 +70,9 @@
         });
     }
 </script>
+<script>
+    $(document).ready(function(){
+        $('#myModal').modal('toggle');
+    });
 
+</script>

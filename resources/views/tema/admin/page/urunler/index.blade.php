@@ -58,7 +58,7 @@
                                 <tr class="text-center">
                                     <td># {{$row->id}}</td>
                                     <td><img src="{{asset($row->image)}}" width="150" alt=""> </td>
-                                    <td><a href="{{route("admin.urunler.duzenleForm",$row->id)}}" style="color: black"><b>{{$row->title}}</b></a></td>
+                                    <td><a href="{{route("admin.urunler.inceleForm",$row->id)}}" style="color: black"><b>{{$row->title}}</b></a></td>
                                     <td>{{ substr($row->desc,0,35) ."......." }}</td>
                                     <td><b>{{number_format($row->fyt,2,',','.') }}</b> TL</td>
                                     <td><b class="text-danger">%{{$row->indirim_orani}}</b></td>
