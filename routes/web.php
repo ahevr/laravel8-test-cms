@@ -20,6 +20,7 @@ Route::group(["namespace"=>"admin","prefix"=>"admin","as" => "admin.","middlewar
         Route::get  ( "/ekleForm"         , "urunler@create"    )   ->name("ekleForm");
         Route::post ( "/ekle"             , "urunler@store"     )   ->name("ekle.post");
         Route::get  ( "/duzenleForm/{id}" , "urunler@edit"      )   ->name("duzenleForm");
+        Route::get  ( "/inceleForm/{id}"  , "urunler@review"    )   ->name("inceleForm");
         Route::post ( "/duzenle/{id}"     , "urunler@update"    )   ->name("duzenle.post");
         Route::get  ( "/galeriForm/{id}"  , "urunler@galeri"    )   ->name("galeriForm");
         Route::post ( "/galeri/{id}"      , "urunler@galeriSet" )   ->name("galeri.post");

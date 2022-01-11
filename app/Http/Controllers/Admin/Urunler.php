@@ -154,6 +154,8 @@ class Urunler extends Controller{
             "title"    => $urunler->title,
             "desc"     => $urunler->desc,
             "fyt"      => $urunler->fyt,
+            "indirim_orani" => $urunler->indirim_orani,
+            "toplam_fyt"    => $urunler->toplam_fyt,
             "isActive" => 1,
             "renkid"   => $urunler->renkid,
             "kategori_id"   => $urunler->kategori_id,
@@ -250,6 +252,25 @@ class Urunler extends Controller{
 
         }
 
+    }
+
+    public function review($id){
+
+        $renk = RenklerModel::all();
+
+        $kategori = KategorilerModel::all();
+
+        $data = UrunlerModel::where("id",$id)->first();
+
+        if ($data){
+
+            return view("tema.admin.page.urunler.review",compact("data","renk","kategori"));
+
+        } else {
+
+            return redirect()->route("tema.admin.page.urunler");
+
+        }
     }
 
 }

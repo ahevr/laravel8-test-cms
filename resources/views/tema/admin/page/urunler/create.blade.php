@@ -25,51 +25,62 @@
                     </div>
                 </div>
             </div>
-            <!--begin::Form-->
             <form action="{{route("admin.urunler.ekle.post")}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body satir">
-                    <div class="form-group">
-                        <label>Ürün Adı<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" name="title" />
-                    </div>
-                    <div class="form-group">
-                        <label>Açıklama<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" name="desc"  />
-                    </div>
-                    <div class="form-group">
-                        <label>Fiyat<span class="text-danger">*</span></label>
-                        <input type="number" class="form-control fiyat hesaplama" id="fiyat" name="fyt"  />
-                    </div>
-
-                    <div class="form-group">
-                        <label for="discount">İndirim Oranı</label>
-                        <input type="number" class="form-control iskonto hesaplama" id="discount" name="indirim_orani" placeholder="İndirim Oranı">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">İndirimli Fiyatı</label>
-                        <input type="text" class="form-control satisfiyati" name="toplam_fyt">
-                    </div>
-
-
-                    <div class="form-group">
-                        <label>Renk<span class="text-danger">*</span></label>
-                        <select name="renkid" class="form-control">
-                            <option value="#">Renk Seçiniz</option>
-                            @foreach($renk as $row)
-                                <option value="{{$row->id}}">{{$row->renk_adi}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Kategori<span class="text-danger">*</span></label>
-                        <select name="kategori_id" class="form-control">
-                            <option value="#">Kategori Seçiniz</option>
-                            @foreach($kategori as $row)
-                                <option value="{{$row->id}}">{{$row->name}}</option>
-                            @endforeach
-                        </select>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Ürün Adı<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="title" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Açıklama<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="desc"  />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Fiyat<span class="text-danger">*</span></label>
+                                <input type="number" class="form-control fiyat hesaplama" id="fiyat" name="fyt"  />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="discount">İndirim Oranı</label>
+                                <input type="number" class="form-control iskonto hesaplama" id="discount" name="indirim_orani" placeholder="İndirim Oranı">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">İndirimli Fiyatı</label>
+                                <input type="text" class="form-control satisfiyati" name="toplam_fyt">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Renk<span class="text-danger">*</span></label>
+                                <select name="renkid" class="form-control">
+                                    <option value="#">Renk Seçiniz</option>
+                                    @foreach($renk as $row)
+                                        <option value="{{$row->id}}">{{$row->renk_adi}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Kategori<span class="text-danger">*</span></label>
+                                <select name="kategori_id" class="form-control">
+                                    <option value="#">Kategori Seçiniz</option>
+                                    @foreach($kategori as $row)
+                                        <option value="{{$row->id}}">{{$row->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlFile1">Ürün Görsel</label>
@@ -80,8 +91,6 @@
                     <button type="submit" class="btn btn-primary mr-2">Kaydet</button>
                 </div>
             </form>
-            <!--end::Form-->
         </div>
     </div>
-
 @endsection

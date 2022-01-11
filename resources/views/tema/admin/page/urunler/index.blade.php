@@ -39,35 +39,30 @@
                 </form>
                 <div class="example mb-10">
                     <div class="example-preview">
-                        <table class="table">
+                        <table class="table table-hover">
                             <thead>
-                            <tr>
+                            <tr class="text-center">
                                 <th scope="col">#</th>
                                 <th scope="col">Görsel</th>
                                 <th scope="col">İsim</th>
-                                <th scope="col">Açıklama</th>
-                                <th scope="col">Fyt</th>
-                                <th scope="col">İndirim Oranı</th>
-                                <th scope="col">Toplam Fyt</th>
-                                <th scope="col">Renk</th>
-                                <th scope="col">Kategori</th>
+                                <th scope="col">Desc</th>
+                                <th scope="col">L.Fyt</th>
+                                <th scope="col">İndrm Oranı</th>
+                                <th scope="col">T.Fyt</th>
                                 <th scope="col">Durumu</th>
                                 <th scope="col">İşlemler</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($data as $row)
-                                <tr>
-                                    <th scope="row">{{$row->id}}</th>
+                                <tr class="text-center">
+                                    <td># {{$row->id}}</td>
                                     <td><img src="{{asset($row->image)}}" width="150" alt=""> </td>
-                                    <td>{{$row->title}}</td>
+                                    <td><a href="{{route("admin.urunler.duzenleForm",$row->id)}}" style="color: black"><b>{{$row->title}}</b></a></td>
                                     <td>{{ substr($row->desc,0,35) ."......." }}</td>
-                                    <td>₺{{$row->fyt}}</td>
-                                    <td>%{{$row->indirim_orani}}</td>
-                                    <td>₺{{$row->toplam_fyt}}</td>
-                                    <td>{{$row->fyt}}</td>
-                                    <td>{{$row->renk_adi}}</td>
-                                    <td>{{$row->kategori_name}}</td>
+                                    <td><b>{{number_format($row->fyt,2,',','.') }}</b> TL</td>
+                                    <td><b class="text-danger">%{{$row->indirim_orani}}</b></td>
+                                    <td><b class="text-success">{{number_format($row->toplam_fyt,2,',','.')}}</b> TL</td>
                                     <td>
                                         <?php if ($row->isActive == "1"){ ?>
                                             <a href="{{route("admin.urunler.status",$row->id)}}" class="btn btn-sm btn-success">Aktif</a>
@@ -76,20 +71,20 @@
                                         <?php  } ?>
                                     </td>
                                     <td>
-                                        <button
-                                            data-url="{{route("admin.urunler.sil",$row->id)}}"
-                                            class="btn btn-sm btn-danger silButton">
-                                            <i class="flaticon-delete"></i></i>
-                                            Sil
-                                        </button>
+                                        <a href="{{route("admin.urunler.inceleForm",$row->id)}}"
+                                           class="btn btn-sm btn-info"><i class="flaticon-eye"></i>
+                                        </a>
                                         <a href="{{route("admin.urunler.duzenleForm",$row->id)}}"
                                            class="btn btn-sm btn-primary"><i class="flaticon-edit"></i>
-                                            Düzenle
                                         </a>
                                         <a href="{{route("admin.urunler.galeriForm",$row->id)}}"
                                            class="btn btn-sm btn-warning"><i class="flaticon2-image-file"></i>
-                                            Galeri
                                         </a>
+                                        <button
+                                                data-url="{{route("admin.urunler.sil",$row->id)}}"
+                                                class="btn btn-sm btn-danger silButton">
+                                            <i class="flaticon-delete"></i></i>
+                                        </button>
                                     </td>
                                 </tr>
                             @endforeach
