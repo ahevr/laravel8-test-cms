@@ -1,7 +1,5 @@
 @extends("tema.master")
 @section("content")
-
-
     {{session("toast_success")}}
 
     @if ($errors->any())
@@ -15,7 +13,7 @@
     @endif
 
     <div class="col-md-12">
-        <div class="card card-custom">
+        <div class="card card-custom satir">
             <div class="card-header">
                 <h3 class="card-title">
                     Ürün Ekle
@@ -30,7 +28,7 @@
             <!--begin::Form-->
             <form action="{{route("admin.urunler.ekle.post")}}" method="post" enctype="multipart/form-data">
                 @csrf
-                <div class="card-body">
+                <div class="card-body satir">
                     <div class="form-group">
                         <label>Ürün Adı<span class="text-danger">*</span></label>
                         <input type="text" class="form-control" name="title" />
@@ -41,8 +39,20 @@
                     </div>
                     <div class="form-group">
                         <label>Fiyat<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" name="fyt"  />
+                        <input type="number" class="form-control fiyat hesaplama" id="fiyat" name="fyt"  />
                     </div>
+
+                    <div class="form-group">
+                        <label for="discount">İndirim Oranı</label>
+                        <input type="number" class="form-control iskonto hesaplama" id="discount" name="indirim_orani" placeholder="İndirim Oranı">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">İndirimli Fiyatı</label>
+                        <input type="text" class="form-control satisfiyati" name="toplam_fyt">
+                    </div>
+
+
                     <div class="form-group">
                         <label>Renk<span class="text-danger">*</span></label>
                         <select name="renkid" class="form-control">

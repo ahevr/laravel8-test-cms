@@ -1,4 +1,5 @@
 @extends("tema.master")
+@section('title',  e(strip_tags(trim($data->title))) )
 @section("content")
     {{session("toast_success")}}
     <div class="col-md-12">

@@ -11,8 +11,7 @@ use App\Models\Admin\UrunlerImageModel;
 use App\Models\Admin\UrunlerModel;
 use Illuminate\Http\Request;
 
-class Urunler extends Controller
-{
+class Urunler extends Controller{
 
     public function index(){
 
@@ -34,7 +33,7 @@ class Urunler extends Controller
     public function store(Request $urunler){
 
         $urunler->validate([
-            "title" => "required|min:2|max:100",
+            "title" => "required|min:2|max:255",
         ]);
 
 
@@ -43,16 +42,19 @@ class Urunler extends Controller
 
         $ekle = UrunlerModel::create([
 
-            "url"      => mHelper::permalink($urunler->title),
-            "title"    => $urunler->title,
-            "desc"     => $urunler->desc,
-            "fyt"      => $urunler->fyt,
-            "renkid"   => $urunler->renkid,
-            "kategori_id" => $urunler->kategori_id,
+            "url"           => mHelper::permalink($urunler->title),
+            "title"         => $urunler->title ,
+            "desc"          => $urunler->desc,
+            "fyt"           => $urunler->fyt,
+            "indirim_orani" => $urunler->indirim_orani,
+            "toplam_fyt"    => $urunler->toplam_fyt,
+            "renkid"        => $urunler->renkid,
+            "kategori_id"   => $urunler->kategori_id,
             "kategori_name" => $kategoriName,
-            "renk_adi" => $renkName,
-            "isActive" => 1,
-            "image"    => imageUpload::singleUpload(strtolower(($urunler->title)),"urunler",$urunler->file("image")),
+            "renk_adi"      => $renkName,
+            "isActive"      => 1,
+            "image"         => imageUpload::singleUpload(strtolower(substr($urunler->title,0,60)),"urunler",$urunler->file("image")),
+
         ]);
 
         if ($ekle){
@@ -87,37 +89,6 @@ class Urunler extends Controller
 
 
         UrunlerModel::where("id",$id)->update($durum);
-
-        if ($durum){
-
-            return redirect("admin/urunler")->with("toast_success","Durum Değiştirme Başarılı");
-
-        } else {
-
-            return redirect("admin/urunler")->with("toast_error","Hata Var");
-        }
-
-    }
-
-    public function fotoStatus(Request $urunler,$id){
-
-        $status = UrunlerImageModel::select("isActive")->where("id",$id)->first();
-
-
-        if ($status->isActive == "1") {
-
-            $isActive = "0";
-
-        } else {
-
-            $isActive = "1";
-
-        }
-
-        $durum = array("isActive"=>$isActive);
-
-
-        UrunlerImageModel::where("id",$id)->update($durum);
 
         if ($durum){
 
@@ -200,6 +171,37 @@ class Urunler extends Controller
 
     }
 
+    public function fotoStatus(Request $urunler,$id){
+
+        $status = UrunlerImageModel::select("isActive")->where("id",$id)->first();
+
+
+        if ($status->isActive == "1") {
+
+            $isActive = "0";
+
+        } else {
+
+            $isActive = "1";
+
+        }
+
+        $durum = array("isActive"=>$isActive);
+
+
+        UrunlerImageModel::where("id",$id)->update($durum);
+
+        if ($durum){
+
+            return redirect("admin/urunler")->with("toast_success","Durum Değiştirme Başarılı");
+
+        } else {
+
+            return redirect("admin/urunler")->with("toast_error","Hata Var");
+        }
+
+    }
+
     public function galeri($id){
 
         $galeri = UrunlerModel::where("id",$id)->first();
@@ -249,11 +251,5 @@ class Urunler extends Controller
         }
 
     }
-
-
-
-
-
-
 
 }

@@ -5,12 +5,12 @@ class mHelper{
 
     static function permalink($string)
     {
-        $find = array("Ç", "Ş", "Ğ", "Ü", "İ", "Ö", "ç", "ş", "ğ", "ü", "ö", "ı", "+", "#");
-        $replace = array("c", "s", "g", "u", "i", "o", "c", "s", "g", "u", "o", "i", "plus", "sharp");
-        $string = strtolower(str_replace($find, $replace, $string));
-        $string = preg_replace("@[^A-Za-z0-9\-_\.\+]@i", " ", $string);
-        $string = trim(preg_replace("/\s+/", " ", $string));
-        $string = str_replace(" ", "-", $string);
+        $find    = array("/", "ç", "Ç", "ğ", "Ğ", "ü", "Ü", "ö", "Ö", "ı", "İ", "ş", "Ş", ".",  ",",  "!", "'", "\"", " ", "?", "*", "_", "|", "=", "(", ")", "[", "]", "{", "}");
+        $replace = array("-", "c", "c", "g", "g", "u", "u", "o", "o", "i", "i", "s", "s", "-",  "-",  "-", "-", "-",  "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-");
+        $string  = strtolower(str_replace($find, $replace, $string));
+        $string  = preg_replace("@[^A-Za-z0-9\-_\.\+]@i", " ", $string);
+        $string  = trim(preg_replace("/\s+/", " ", $string));
+        $string  = str_replace(" ", "-", $string);
         return $string;
     }
 }

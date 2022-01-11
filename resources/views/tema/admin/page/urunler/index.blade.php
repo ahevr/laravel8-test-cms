@@ -1,4 +1,5 @@
 @extends("tema.master")
+@section('title', "Ürünler")
 @section("content")
     @include("tema.admin.page.inc.page_style")
     @include("tema.admin.page.inc.page_script")
@@ -46,6 +47,8 @@
                                 <th scope="col">İsim</th>
                                 <th scope="col">Açıklama</th>
                                 <th scope="col">Fyt</th>
+                                <th scope="col">İndirim Oranı</th>
+                                <th scope="col">Toplam Fyt</th>
                                 <th scope="col">Renk</th>
                                 <th scope="col">Kategori</th>
                                 <th scope="col">Durumu</th>
@@ -58,7 +61,10 @@
                                     <th scope="row">{{$row->id}}</th>
                                     <td><img src="{{asset($row->image)}}" width="150" alt=""> </td>
                                     <td>{{$row->title}}</td>
-                                    <td>{{$row->desc}}</td>
+                                    <td>{{ substr($row->desc,0,35) ."......." }}</td>
+                                    <td>₺{{$row->fyt}}</td>
+                                    <td>%{{$row->indirim_orani}}</td>
+                                    <td>₺{{$row->toplam_fyt}}</td>
                                     <td>{{$row->fyt}}</td>
                                     <td>{{$row->renk_adi}}</td>
                                     <td>{{$row->kategori_name}}</td>

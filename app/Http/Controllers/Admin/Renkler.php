@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helper\mHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\RenklerModel;
 use Illuminate\Http\Request;
@@ -26,7 +27,6 @@ class Renkler extends Controller{
     public function store(Request $request){
 
         $request->validate([
-
             "renk_adi" => "required|min:2|max:100",
         ]);
 

@@ -40,7 +40,7 @@
                 <div class="checkbox-inline">
                     <label class="checkbox checkbox-outline checkbox-white text-white m-0">
                         <input type="checkbox" name="remember">
-                        <span></span>Remember mee</label>
+                        <span></span>Remember me</label>
                 </div>
                 <a href="/forgot-password" id="kt_login_forgot" class="text-white font-weight-bold">Şifremi Unuttum ?</a>
             </div>

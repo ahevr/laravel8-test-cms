@@ -47,3 +47,27 @@
 
 </script>
 
+<script>
+    $(document).ready(function () {
+        $(document).on("keyup", ".hesaplama", calcAll); //
+        $(".hesaplama").on("change", calcAll); });
+    function calcAll() {
+        $(".satir").each(function () {
+            var fiyat = 0;
+            var iskonto = 0;
+
+            if (!isNaN(parseFloat($(this).find(".fiyat").val()))) {
+                fiyat = parseFloat($(this).find(".fiyat").val());
+            }
+            if (!isNaN(parseFloat($(this).find(".iskonto").val()))) {
+                iskonto = parseFloat($(this).find(".iskonto").val());
+            }
+            iskontotutar = fiyat * iskonto/100;
+            $(this).find(".iskontotutar").val(iskontotutar.toFixed(2));
+
+            satisfiyati = fiyat - iskontotutar;
+            $(this).find(".satisfiyati").val(satisfiyati.toFixed(2));
+        });
+    }
+</script>
+
