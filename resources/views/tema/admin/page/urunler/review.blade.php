@@ -4,20 +4,24 @@
     <div class="modal" id="myModal" tabindex="-1" role="dialog">
         <div class="modal-dialog" id="myModal" role="document">
             <div class="modal-content" id="myModal">
-                <div class="modal-header">
-                    <h5 class="modal-title text-danger">{{$data->title}} </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>Bu ekran sadece ürün ID'si : <b>{{$data->id}}</b> olan ve ürün adı : <b>{{$data->title}}</b> olan ürünün ön izlemesidir.</p>
-                    <small>Ürün bilgileri değişikliği buradan yapılmamaktadır. <br>Lütfen ilgili ürün değişikliklerini güncelleme sayfasından yapınız. </small>
-                    <br>
-                    <small> <a href="{{route("admin.urunler.duzenleForm",$data->id)}}" >Güncellemek İçin Tıklayın</a> </small>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                <div class="modal-content text-center">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-danger"><b>{{$data->title}}</b>  </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <img src="{{asset($data->image)}}" width="400" alt="">
+                            <hr>
+                            <p>Bu ekran sadece ürün ID'si : <b>{{$data->id}}</b> olan ve ürün adı : <b>{{$data->title}}</b> olan ürünün <b>görsel</b>  ön izlemesidir</p>
+                            <small>Ürün bilgileri değişikliği buradan yapılmamaktadır <br>Lütfen ilgili ürün değişikliklerini güncelleme sayfasından yapınız</small>
+                            <br>
+                            <small> <a href="{{route("admin.urunler.duzenleForm",$data->id)}}">Güncellemek İçin Tıklayın</a> </small>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-warning" data-dismiss="modal">Kapat</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
