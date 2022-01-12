@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Helper\imageUpload;
 use App\Helper\mHelper;
 use App\Http\Controllers\Controller;
+use App\Models\Admin\AyalarModel;
 use App\Models\Admin\KategorilerModel;
 use App\Models\Admin\RenklerModel;
 use App\Models\Admin\UrunlerImageModel;
@@ -17,16 +18,19 @@ class Urunler extends Controller{
 
         $data = UrunlerModel::paginate(5);
 
-        return view("tema.admin.page.urunler.index",compact("data"));
+        $ayar = AyalarModel::all()->first();
+
+        return view("tema.admin.page.urunler.index",compact("data","ayar"));
 
     }
 
     public function create(){
 
+        $ayar     = AyalarModel::all()->first();
         $renk     = RenklerModel::all();
         $kategori = KategorilerModel::all();
 
-        return view("tema.admin.page.urunler.create",["renk"=>$renk,"kategori"=>$kategori]);
+        return view("tema.admin.page.urunler.create",["renk"=>$renk,"kategori"=>$kategori,"ayar"=>$ayar]);
 
     }
 
@@ -128,9 +132,11 @@ class Urunler extends Controller{
 
         $data = UrunlerModel::where("id",$id)->first();
 
+        $ayar     = AyalarModel::all()->first();
+
         if ($data){
 
-            return view("tema.admin.page.urunler.update",compact("data","renk","kategori"));
+            return view("tema.admin.page.urunler.update",compact("data","renk","kategori","ayar"));
 
         } else {
 
@@ -209,7 +215,9 @@ class Urunler extends Controller{
 
         $data  = UrunlerImageModel::where('urunler_id', $id)->get();
 
-        return view("tema.admin.page.urunler.galeri",["data"=>$data,"galeri"=>$galeri]);
+        $ayar     = AyalarModel::all()->first();
+
+        return view("tema.admin.page.urunler.galeri",["data"=>$data,"galeri"=>$galeri,"ayar"=>$ayar]);
 
 
 
@@ -261,9 +269,11 @@ class Urunler extends Controller{
 
         $data = UrunlerModel::where("id",$id)->first();
 
+        $ayar     = AyalarModel::all()->first();
+
         if ($data){
 
-            return view("tema.admin.page.urunler.review",compact("data","renk","kategori"));
+            return view("tema.admin.page.urunler.review",compact("data","renk","kategori","ayar"));
 
         } else {
 

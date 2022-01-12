@@ -94,23 +94,6 @@
                         </table>
                         {{ $data->links() }}
                     </div>
-                        <?php if (count($data) > 0) { ?>
-                            <div class="row float-right">
-                                <p>
-                                  <b><?php echo ($data->count()."</b>");?> Kayıt Bulundu !
-                                </p>
-                            </div>
-                        <?php } else { ?>
-                            <div class="com">
-                                <script>
-                                    iziToast.error({
-                                        title: 'Kayıt Bulunamadı !',
-                                        message: 'Herhangi Bir Kayıt Yok Tekrar Deneyiniz',
-                                        position : "topCenter"
-                                    });
-                                </script>
-                            </div>
-                         <?php  } ?>
                 </div>
             </div>
         </div>

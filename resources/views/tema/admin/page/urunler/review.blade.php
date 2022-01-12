@@ -13,10 +13,10 @@
                         <div class="modal-body">
                             <img src="{{asset($data->image)}}" width="400" alt="">
                             <hr>
-                            <p>Bu ekran sadece ürün ID'si : <b>{{$data->id}}</b> olan ve ürün adı : <b>{{$data->title}}</b> olan ürünün <b>görsel</b>  ön izlemesidir</p>
+                            <p>Bu ekran sadece ürün ID'si : <b>{{$data->id}}</b> olan ve ürün adı : <b>{{$data->title}}</b> olan ürünün <b> ön izlemesidir</b></p>
                             <small>Ürün bilgileri değişikliği buradan yapılmamaktadır <br>Lütfen ilgili ürün değişikliklerini güncelleme sayfasından yapınız</small>
                             <br>
-                            <small> <a href="{{route("admin.urunler.duzenleForm",$data->id)}}">Güncellemek İçin Tıklayın</a> </small>
+                            <small> <a href="{{route("admin.urunler.duzenleForm",$data->id)}}"><b>Güncellemek İçin Tıklayın !</b> </a> </small>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-warning" data-dismiss="modal">Kapat</button>
@@ -98,6 +98,15 @@
                                         <option disabled @if($row->id === $data->kategori_id) selected @endif value="{{$row->id}}">{{$row->name}}</option>
                                     @endforeach
                                 </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Durumu<span class="text-danger">*</span></label>
+                                    <?php if ($data->isActive == "1"){ ?>
+                                    <a href="{{route("admin.urunler.status",$data->id)}}" class="btn btn-sm btn-success disabled">Aktif</a>
+                                    <?php } else { ?>
+                                    <a href="{{route("admin.urunler.status",$data->id)}}" class="btn btn-sm btn-danger disabled">Pasif</a>
+                                    <?php  } ?>
                             </div>
                         </div>
                     </div>

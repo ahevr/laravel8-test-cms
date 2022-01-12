@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Helper\mHelper;
 use App\Http\Controllers\Controller;
+use App\Models\Admin\AyalarModel;
 use App\Models\Admin\RenklerModel;
 use Illuminate\Http\Request;
 
@@ -14,13 +15,16 @@ class Renkler extends Controller{
 
         $data = RenklerModel::paginate(5);
 
-        return view("tema.admin.page.renkler.index",compact("data"));
+        $ayar     = AyalarModel::all()->first();
+
+        return view("tema.admin.page.renkler.index",compact("data","ayar"));
 
     }
 
     public function create(){
 
-        return view("tema.admin.page.renkler.create");
+        $ayar     = AyalarModel::all()->first();
+        return view("tema.admin.page.renkler.create",compact("ayar"));
 
     }
 

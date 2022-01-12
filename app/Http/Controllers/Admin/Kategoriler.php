@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Helper\mHelper;
 use App\Http\Controllers\Controller;
+use App\Models\Admin\AyalarModel;
 use App\Models\Admin\KategorilerModel;
 use Illuminate\Http\Request;
 
@@ -11,15 +12,19 @@ class Kategoriler extends Controller
 {
     public function index(){
 
+        $ayar     = AyalarModel::all()->first();
+
         $data = KategorilerModel::paginate(10);
 
-        return view("tema.admin.page.kategoriler.index",compact("data"));
+        return view("tema.admin.page.kategoriler.index",compact("data","ayar"));
 
     }
 
     public function create(){
 
-        return view("tema.admin.page.kategoriler.create");
+        $ayar     = AyalarModel::all()->first();
+
+        return view("tema.admin.page.kategoriler.create",compact("ayar"));
 
     }
 
