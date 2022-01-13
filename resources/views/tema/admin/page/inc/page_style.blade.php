@@ -10,3 +10,13 @@
 <link href="{{asset("tema/admin")}}/css/themes/layout/aside/dark.css" rel="stylesheet" type="text/css" />
 <link href="{{asset("tema/admin")}}/toastr/iziToast.min.css" rel="stylesheet" type="text/css" />
 <link rel="shortcut icon" href="{{asset("tema/admin")}}/media/logos/favicon.ico" />
+<style>
+    .button-inf-container{
+        display: none;
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+    }
+
+</style>

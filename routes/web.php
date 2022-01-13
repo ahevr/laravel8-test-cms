@@ -67,6 +67,21 @@ Route::group(["namespace"=>"admin","prefix"=>"admin","as" => "admin.","middlewar
     });
 
 
+    // Slider Route** //
+
+    Route::group(["prefix"=>"slider","as"=>"slider."],function() {
+        Route::get ( "/"                , "slider@index" )->name("index");
+        Route::get ( "/ekleForm"        , "slider@create")->name("ekleForm");
+        Route::post( "/ekle"            , "slider@store" )->name("ekle.post");
+        Route::get ( "/sil/{id}"        , "slider@delete")->name("sil");
+        Route::get ( "/duzenleForm/{id}", "slider@edit"  )->name("duzenleForm");
+        Route::post( "/duzenle/{id}"    , "slider@update")->name("duzenle.post");
+        Route::get ( "/status/{id}"     , "slider@status")->name("status");
+    });
+
+
+
+
 
 
 

@@ -76,3 +76,9 @@
     });
 
 </script>
+
+<script>
+    $(".button_usage_btn").change(function () {
+        $(".button-inf-container").slideToggle();
+    })
+</script>
