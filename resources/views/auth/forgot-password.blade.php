@@ -23,13 +23,12 @@
     <!--begin::Login Sign in form-->
     <div class="login-signin">
         <div class="mb-20">
-            <h3 class="opacity-40 font-weight-normal">Sign In To Admin</h3>
-            <p class="opacity-40">Enter your details to login to your account:</p>
+            <h3 class="opacity-40 font-weight-normal">Şifremi Unuttum</h3>
         </div>
         <form method="POST" action="{{ route('password.email') }}">
             @csrf
             <div class="form-group">
-                <input class="form-control h-auto text-white bg-white-o-5 rounded-pill border-0 py-4 px-8" type="text" placeholder="Email" name="email" autocomplete="off" />
+                <input class="form-control h-auto text-white bg-white-o-5 rounded-pill border-0 py-4 px-8" type="text" placeholder="Email Adresi" name="email" autocomplete="off" />
             </div>
 
             <div class="form-group text-center mt-10">
