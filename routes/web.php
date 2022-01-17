@@ -4,11 +4,18 @@ use Illuminate\Support\Facades\Route;
 use RealRashid\SweetAlert\Facades\Alert;
 
 
-Route::get("/",function (){
+//Route::get("/",function (){
+//
+//    Route::get ( "/", "urunler@index"     )->name("index");
+//
+//});
 
-    return "frontPage Yok Admin Var Sadece  <a href='/admin'> tıkla </a>"  ;
+Route::group(["namespace"=>"site","as" => "site."],function (){
+
+    Route::get("/","HomePageController@index")->name("index");
 
 });
+
 
 
 

@@ -77,9 +77,7 @@ class Slider extends Controller
 
         }
 
-
         $durum = array("isActive"=>$isActive);
-
 
         SliderModel::where("id",$id)->update($durum);
 
@@ -90,6 +88,7 @@ class Slider extends Controller
         } else {
 
             return redirect("admin/slider")->with("toast_error","Hata Var");
+
         }
 
     }
