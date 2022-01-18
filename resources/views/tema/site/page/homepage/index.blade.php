@@ -1,4 +1,5 @@
 @extends("tema.siteMaster")
+@section('title', "Ürünler")
 @section("content")
     <div class="container">
         <div class="row">
