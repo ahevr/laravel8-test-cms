@@ -4,15 +4,12 @@ use Illuminate\Support\Facades\Route;
 use RealRashid\SweetAlert\Facades\Alert;
 
 
-//Route::get("/",function (){
-//
-//    Route::get ( "/", "urunler@index"     )->name("index");
-//
-//});
 
 Route::group(["namespace"=>"site","as" => "site."],function (){
 
-    Route::get("/","HomePageController@index")->name("index");
+    Route::get("/"          ,"HomePageController@index")->name("index");
+    Route::get("/urun-detay/{url}","UrunlerPageController@index")->name("urun-detay");
+    Route::get ("/search"         , "search@index"      )->name("search");
 
 });
 

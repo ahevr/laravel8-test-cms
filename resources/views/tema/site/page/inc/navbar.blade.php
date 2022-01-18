@@ -24,5 +24,12 @@
                 </button>
             </form>
         </div>
+
+    </div>
+    <div class="search-container">
+        <form action="{{route("site.search")}}" >
+            <input type="text" placeholder="Ara.." name="keyword">
+            <button class="btn btn-success btn-sm" type="submit"><i class="fa fa-search"></i></button>
+        </form>
     </div>
 </nav>
