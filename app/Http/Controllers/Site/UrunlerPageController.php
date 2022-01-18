@@ -10,14 +10,13 @@ use phpDocumentor\Reflection\Element;
 class UrunlerPageController extends Controller{
 
     public function index($url){
-        $x = UrunlerModel::where("url",$url)->count();
+        $x = UrunlerModel::where("url",$url)->where("isActive",1)->count();
         if ($x > 0) {
             $urunDetayGetir = UrunlerModel::where("url",$url)->first();
-            $urunRandomGetir = UrunlerModel::inRandomOrder()->limit(4)->get();
+            $urunRandomGetir = UrunlerModel::inRandomOrder()->where("isActive",1)->limit(4)->get();
             return view("tema.site.page.homepage.urun-detay", compact("urunDetayGetir","urunRandomGetir"));
         } else {
             return redirect("/");
         }
     }
-
 }
