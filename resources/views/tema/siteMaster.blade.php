@@ -10,8 +10,11 @@
 @include("tema.site.page.inc.navbar")
 
 <!-- Header-->
-@include("tema.site.page.inc.header")
 
+<header class="bg-dark py-5">
+    @yield("header")
+
+</header>
 <!-- Section-->
 <section class="py-5">
     <div class="container">

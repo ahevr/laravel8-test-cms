@@ -10,7 +10,7 @@ class HomePageController extends Controller
 {
     public function index(){
 
-        $urunleriGetir = UrunlerModel::where("isActive",1)->paginate(4);
+        $urunleriGetir = UrunlerModel::where("isActive",1)->paginate(10);
 
         return view("tema.site.page.homepage.index",compact("urunleriGetir"));
 

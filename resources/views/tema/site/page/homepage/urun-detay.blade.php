@@ -1,5 +1,13 @@
 @extends("tema.siteMaster")
 @section('title',  e(strip_tags(trim($urunDetayGetir->title))) )
+@section("header")
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">{{$urunDetayGetir->title}}</h1>
+            <p class="lead fw-normal text-white-50 mb-0">{{$urunDetayGetir->title}} ile İlgili Detaylar</p>
+        </div>
+    </div>
+@endsection
 @section("content")
     <section class="py-5">
         <div class="container px-4 px-lg-5 my-5">

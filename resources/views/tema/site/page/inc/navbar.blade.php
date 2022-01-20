@@ -16,20 +16,31 @@
                     </ul>
                 </li>
             </ul>
-            <form class="d-flex">
-                <button class="btn btn-outline-dark" type="submit">
-                    <i class="bi-cart-fill me-1"></i>
-                    Cart
-                    <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                </button>
-            </form>
         </div>
 
+            <div class="ico">
+                <form style="display: flex;">
+                    <button class="btn btn-dark" style="margin-right: 10px" type="submit"><i class="fa fa-user"></i>
+                        <span>Giriş Yap</span>
+                    </button>
+
+                </form>
+            </div>
+            <div class="co">
+                <form style="display: flex;" action="{{route("site.search")}}">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Ara.." name="keyword" aria-label="Search">
+                    <button class="btn btn-success " style="margin-left: 5px" type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
     </div>
-    <div class="search-container">
-        <form action="{{route("site.search")}}" >
-            <input type="text" placeholder="Ara.." name="keyword">
-            <button class="btn btn-success btn-sm" type="submit"><i class="fa fa-search"></i></button>
-        </form>
-    </div>
+
+
+{{--    <div class="search-container">--}}
+{{--        <form action="{{route("site.search")}}" >--}}
+{{--            <input type="text" placeholder="Ara.." name="keyword">--}}
+{{--            <button class="btn btn-success btn-sm" type="submit"><i class="fa fa-search"></i></button>--}}
+{{--        </form>--}}
+{{--    </div>--}}
+
+
 </nav>
