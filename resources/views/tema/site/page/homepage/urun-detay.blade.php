@@ -21,7 +21,9 @@
                         <span class="text-decoration-line-through">{{number_format($urunDetayGetir->fyt,2,',','.')}} TL</span>
                         <span>{{number_format($urunDetayGetir->toplam_fyt,2,',','.')}} TL</span>
                     </div>
-                    <p class="lead">{{$urunDetayGetir->desc}}</p>
+                    <p class="lead">Açıklama: {{$urunDetayGetir->desc}}</p>
+                    <p class="lead">Kategori: {{$urunDetayGetir->kategori_name}}</p>
+                    <p class="lead">Renk:     {{$urunDetayGetir->renk_adi}}</p>
                     <div class="d-flex">
                         <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
                         <button class="btn btn-outline-dark flex-shrink-0" type="button">

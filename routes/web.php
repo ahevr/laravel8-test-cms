@@ -13,6 +13,7 @@ Route::group(["namespace"=>"site","as" => "site."],function (){
     Route::get ("/"                ,"HomePageController@index"      )->name("index");
     Route::get ("/urun-detay/{url}","UrunlerPageController@index"   )->name("urun-detay");
     Route::get ("/search"          ,"search@index"                  )->name("search");
+    Route::get ("/kategori/{url}"  ,"KategoriController@index"      )->name("kategori");
 });
 
 
