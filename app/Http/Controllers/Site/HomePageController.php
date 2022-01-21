@@ -15,4 +15,5 @@ class HomePageController extends Controller
         return view("tema.site.page.homepage.index",compact("urunleriGetir"));
 
     }
+
 }
