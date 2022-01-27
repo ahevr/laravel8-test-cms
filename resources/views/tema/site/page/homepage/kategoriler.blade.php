@@ -13,7 +13,7 @@
     <div class="container">
         <div class="row">
 
-            @if(count($urunler) ==0 )
+            @if(count($urunler) == 0 )
                 <h5 class="fw-bolder">Bu kategoride bir ürün yok </h5>
             @endif
 
@@ -39,6 +39,7 @@
                     </div>
                 </div>
             @endforeach
+                {{ $urunler->links() }}
         </div>
     </div>
 @endsection

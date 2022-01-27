@@ -11,4 +11,10 @@ class KategorilerModel extends Model
 
     protected $guarded = [];
 
+    public function childs() {
+
+        return $this->hasMany(KategorilerModel::class,'parent_id','id') ;
+
+    }
+
 }

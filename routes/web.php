@@ -61,10 +61,8 @@ Route::group(["namespace"=>"admin","prefix"=>"admin","as" => "admin.","middlewar
     // Kategoriler Route** //
 
     Route::group(["prefix"=>"kategoriler","as"=>"kategoriler."],function() {
-        Route::get ( "/"        , "kategoriler@index" )->name("index");
-        Route::get ( "/ekleForm", "kategoriler@create")->name("ekleForm");
-        Route::post( "/ekle"    , "kategoriler@store" )->name("ekle.post");
-        Route::get ( "/sil/{id}", "kategoriler@delete")->name("sil");
+        Route::get( "/" ,"kategoriler@index")->name("index");
+        Route::post("/add-category"       ,"kategoriler@store")->name("add.category");
     });
 
 

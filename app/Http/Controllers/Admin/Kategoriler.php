@@ -6,27 +6,23 @@ use App\Helper\mHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\AyalarModel;
 use App\Models\Admin\KategorilerModel;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class Kategoriler extends Controller
 {
     public function index(){
 
-        $ayar     = AyalarModel::all()->first();
+        $ayar           = AyalarModel::all()->first();
 
-        $data = KategorilerModel::paginate(10);
+        $categories     = KategorilerModel::where('parent_id', '=', 0)->get();
 
-        return view("tema.admin.page.kategoriler.index",compact("data","ayar"));
+        $allCategories  = KategorilerModel::all();
 
-    }
-
-    public function create(){
-
-        $ayar     = AyalarModel::all()->first();
-
-        return view("tema.admin.page.kategoriler.create",compact("ayar"));
+        return view("tema.admin.page.kategoriler.create",["categories"=>$categories,"ayar"=>$ayar,"allCategories"=>$allCategories]);
 
     }
+
 
     public function store(Request $request){
 
@@ -35,13 +31,15 @@ class Kategoriler extends Controller
             "name" => "required|min:2|max:100",
         ]);
 
-        $ekle = KategorilerModel::create([
+        $input = $request->all();
 
-            "name" => $request->name,
-            "url"  => mHelper::permalink($request->name),
-        ]);
+        $input['parent_id'] = empty($input['parent_id']) ? 0 : $input['parent_id'];
 
-        if ($ekle){
+        $input["url"] = mHelper::permalink($request->name);
+
+        KategorilerModel::create($input);
+
+        if ($input){
 
             return redirect("admin/kategoriler")->with("toast_success","Kategori Başarılı Bir Şekilde Eklendi");
 
@@ -50,22 +48,6 @@ class Kategoriler extends Controller
             return redirect("admin/kategoriler")->with("toast_error","Hata Var");
         }
 
-    }
-
-    public function delete($id){
-
-
-        $sil = KategorilerModel::where("id",$id)->delete();
-
-        if ($sil){
-
-            return redirect("admin/kategoriler")->with("toast_warning","Kategori Başarılı Bir Şekilde Silindi");
-
-        } else {
-
-            return redirect("admin/kategoriler")->with("toast_success","Hata Var");
-
-        }
 
     }
 }

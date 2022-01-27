@@ -1,9 +1,6 @@
 @extends("tema.master")
 @section("content")
 
-
-    {{session("toast_success")}}
-
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -14,34 +11,52 @@
         </div>
     @endif
 
-    <div class="col-md-12">
-        <div class="card card-custom">
-            <div class="card-header">
-                <h3 class="card-title">
-                    Kategori Ekle
-                </h3>
-                <div class="card-toolbar">
-                    <div class="example-tools justify-content-center">
-                        <span class="example-toggle" data-toggle="tooltip" title="View code"></span>
-                        <span class="example-copy" data-toggle="tooltip" title="Copy code"></span>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 card card-body bg-light">
+                <form method="post" action="{{route("admin.kategoriler.add.category")}}">
+                    @csrf
+                    @if ($message = Session::get('success'))
+                        <div class="alert alert-success alert-block">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <strong>{{ $message }}</strong>
+                        </div>
+                    @endif
+                    <div class="form-group">
+                        <label>Kategori Adı</label>
+                        <input type="text" class="form-control" name="name"  placeholder="Kategori Adı">
                     </div>
+
+                    <div class="form-group">
+                        <label>Üst Kategori Adı</label>
+                        <select name="parent_id" class="form-control">
+                            <option value="0">Alt Kategori Seç</option>
+                            @foreach($allCategories as $key)
+                                <option value="{{$key->id}}">{{$key->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Kaydet</button>
+                    <button type="reset"  class="btn btn-danger">İptal</button>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <div class="col-md-12 card card-body bg-light">
+                    <h4 class="text-center">
+                        Kategori Listesi
+                    </h4>
+                    <ul class="treeview" id="tree1">
+                        @foreach($categories as $category)
+                            <li>
+                                {{ $category->name }}
+                                @if(count($category->childs))
+                                    @include('tema.admin.page.kategoriler.manageChild',['childs' => $category->childs])
+                                @endif
+                            </li>
+                        @endforeach
+                    </ul>
                 </div>
             </div>
-            <!--begin::Form-->
-            <form action="{{route("admin.kategoriler.ekle.post")}}" method="post" enctype="multipart/form-data">
-                @csrf
-                <div class="card-body">
-                    <div class="form-group">
-                        <label>Kategori Adı<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" name="name" />
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <button type="submit" class="btn btn-primary mr-2">Kaydet</button>
-                </div>
-            </form>
-            <!--end::Form-->
         </div>
     </div>
-
 @endsection

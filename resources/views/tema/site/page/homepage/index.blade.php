@@ -3,7 +3,7 @@
 @section("header")
     <div class="container px-4 px-lg-5 my-5">
         <div class="text-center text-white">
-            <h1 class="display-4 fw-bolder">Ürünler</h1>
+            <h1 class="display-4 fw-bolder"> <b>Ürünler</b></h1>
             <p class="lead fw-normal text-white-50 mb-0">Laravel İle Ürün Listesi</p>
         </div>
     </div>
@@ -22,7 +22,7 @@
                     <div class="card-body p-4">
                         <div class="text-center">
                             <!-- Product name-->
-                            <h5 class="fw-bolder">{{$row->title}} </h5>
+                            <h5 class="fw-bolder"> <b>{{$row->title}}</b> </h5>
                             <hr>
                             <!-- Product price-->
                             <span class="text-decoration-line-through">{{number_format($row->fyt,2,',','.')}} TL</span>
