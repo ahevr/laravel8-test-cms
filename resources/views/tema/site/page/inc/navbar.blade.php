@@ -13,32 +13,31 @@
                     Kategoriler
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li class="dropdown-submenu">
-                        <a class="dropdown-item dropdown-toggle" href="#">Submenu</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Submenu action</a></li>
-                            <li><a class="dropdown-item" href="#">Another submenu action</a></li>
 
 
-                            <li class="dropdown-submenu">
-                                <a class="dropdown-item dropdown-toggle" href="#">Subsubmenu</a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Subsubmenu action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another subsubmenu action</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown-submenu">
-                                <a class="dropdown-item dropdown-toggle" href="#">Second subsubmenu</a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Subsubmenu action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another subsubmenu action</a></li>
-                                </ul>
-                            </li>
+{{--                    @foreach($categories as $category)--}}
+{{--                        <li>--}}
+{{--                            {{ $category->name }}--}}
+{{--                            @if(count($category->childs))--}}
+{{--                                @include('tema.admin.page.kategoriler.manageChild',['childs' => $category->childs])--}}
+{{--                            @endif--}}
+{{--                        </li>--}}
+{{--                    @endforeach--}}
 
-                        </ul>
-                    </li>
+
+                    @foreach($categories as $category)
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="{{route("site.kategori",$category->url)}}">{{$category->name}}</a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    @if(count($category->childs))
+                                        @include('tema.site.page.homepage.manageChild',['childs' => $category->childs])
+                                    @endif
+                                </li>
+                            </ul>
+                        </li>
+                    @endforeach
+
                 </ul>
             </li>
         </ul>

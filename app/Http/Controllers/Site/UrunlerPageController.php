@@ -18,7 +18,9 @@ class UrunlerPageController extends Controller{
 
         $urunRandomGetir = UrunlerModel::inRandomOrder()->where("isActive",1)->limit(4)->get();
 
-        return view("tema.site.page.homepage.urun-detay", compact("urunDetayGetir","urunRandomGetir","katGetir"));
+        $categories     = KategorilerModel::where('parent_id', '=', 0)->get();
+
+        return view("tema.site.page.homepage.urun-detay", compact("urunDetayGetir","urunRandomGetir","katGetir","categories"));
 
     }
 }

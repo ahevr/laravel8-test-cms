@@ -11,14 +11,15 @@ class HomePageController extends Controller
 {
     public function index(){
 
+        //        $katGetir      = KategorilerModel::all();
+
 //        $katGetir      = KategorilerModel::whereRaw("parent_id < 1")->get();
 
-
-        $katGetir      = KategorilerModel::all();
+        $categories     = KategorilerModel::where('parent_id', '=', 0)->get();
 
         $urunleriGetir = UrunlerModel::where("isActive",1)->paginate(10);
 
-        return view("tema.site.page.homepage.index",compact("urunleriGetir","katGetir"));
+        return view("tema.site.page.homepage.index",compact("urunleriGetir","categories"));
 
     }
 

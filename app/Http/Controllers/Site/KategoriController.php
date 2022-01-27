@@ -18,7 +18,9 @@ class KategoriController extends Controller
 
         $urunler  = UrunlerModel::whereIn("kategori_id",$kategori)->paginate(10);
 
-        return view("tema.site.page.homepage.kategoriler", compact("kategori","katGetir","urunler"));
+        $categories     = KategorilerModel::where('parent_id', '=', 0)->get();
+
+        return view("tema.site.page.homepage.kategoriler", compact("kategori","katGetir","urunler","categories"));
 
     }
 }
