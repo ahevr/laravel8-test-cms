@@ -20,7 +20,9 @@ class UrunlerPageController extends Controller{
 
         $categories     = KategorilerModel::where('parent_id', '=', 0)->get();
 
-        return view("tema.site.page.homepage.urun-detay", compact("urunDetayGetir","urunRandomGetir","katGetir","categories"));
+        $toplamUrunSayisi = UrunlerModel::count();
+
+        return view("tema.site.page.homepage.urun-detay", compact("urunDetayGetir","urunRandomGetir","katGetir","categories","toplamUrunSayisi"));
 
     }
 }

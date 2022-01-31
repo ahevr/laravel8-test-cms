@@ -13,18 +13,6 @@
                     Kategoriler
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-
-
-{{--                    @foreach($categories as $category)--}}
-{{--                        <li>--}}
-{{--                            {{ $category->name }}--}}
-{{--                            @if(count($category->childs))--}}
-{{--                                @include('tema.admin.page.kategoriler.manageChild',['childs' => $category->childs])--}}
-{{--                            @endif--}}
-{{--                        </li>--}}
-{{--                    @endforeach--}}
-
-
                     @foreach($categories as $category)
                         <li class="dropdown-submenu">
                             <a class="dropdown-item dropdown-toggle" href="{{route("site.kategori",$category->url)}}">{{$category->name}}</a>
@@ -37,7 +25,6 @@
                             </ul>
                         </li>
                     @endforeach
-
                 </ul>
             </li>
         </ul>

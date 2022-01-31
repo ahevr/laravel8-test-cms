@@ -7,19 +7,17 @@ use App\Models\Admin\KategorilerModel;
 use App\Models\Admin\UrunlerModel;
 use Illuminate\Http\Request;
 
-class HomePageController extends Controller
-{
+class HomePageController extends Controller{
+
     public function index(){
 
-        //        $katGetir      = KategorilerModel::all();
+        $categories       = KategorilerModel::where('parent_id', '=', 0)->get();
 
-//        $katGetir      = KategorilerModel::whereRaw("parent_id < 1")->get();
+        $urunleriGetir    = UrunlerModel::where("isActive",1)->orderByDesc("id")->paginate(10);
 
-        $categories     = KategorilerModel::where('parent_id', '=', 0)->get();
+        $toplamUrunSayisi = UrunlerModel::count();
 
-        $urunleriGetir = UrunlerModel::where("isActive",1)->paginate(10);
-
-        return view("tema.site.page.homepage.index",compact("urunleriGetir","categories"));
+        return view("tema.site.page.homepage.index",compact("urunleriGetir","categories","toplamUrunSayisi"));
 
     }
 
