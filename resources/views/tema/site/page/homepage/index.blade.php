@@ -49,16 +49,18 @@
                 <div class="d-flex flex-row mb-3">
                     <div class="text-muted m-2" id="res"><b>{{$toplamUrunSayisi}}</b> Adet Sonuç Gösteriliyor</div>
                     <div class="ml-auto mr-lg-4">
-                        <div id="sorting" class="border rounded">
-                            <select class="custom-select">
-                                <option selected>Sırala</option>
-                                <option value="rating"><b>En Çok Satanlar</b></option>
-                                <option value="rating"><b>Değerlendirme Sayısı</b></option>
-                                <option value="rating"><b>Beğeni Sayısı</b></option>
-                                <option value="rating"><b>Artan Fiyat</b></option>
-                                <option value="rating"><b>Azalan Fiyat</b></option>
-                            </select>
-                        </div>
+
+                        <form name="sortProducts" id="sortProducts">
+                            <div id="sorting" class="border rounded">
+                                <select name="sort" id="sort" class="custom-select">
+                                    <option value="" selected>Sırala</option>
+                                    <option value="product_name_a_z"><b>A'dan Z'ye</b></option>
+                                    <option value="price_lowest"><b>Artan Fiyat</b></option>
+                                    <option value="price_highest"><b>Azalan Fiyat</b></option>
+                                </select>
+                            </div>
+                        </form>
+                        
                     </div>
                 </div>
                 <hr>
