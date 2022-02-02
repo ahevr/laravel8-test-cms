@@ -17,18 +17,19 @@ class HomePageController extends Controller{
 
         $toplamUrunSayisi = UrunlerModel::count();
 
-        if (isset($_GET["sort"]) && !empty($_GET["sort"])) {
+        if  (strip_tags(trim(request()->has('sort') && !empty(\request("sort"))))) {
 
-            if ($_GET["sort"]=="product_name_a_z"){
+            if (\request("sort")=="product_name_a_z"){
                 $urunleriGetir->orderBy("id","Desc");
 
-            } elseif ($_GET["sort"]=="price_lowest"){
+            } elseif (\request("sort")=="price_lowest"){
                 $urunleriGetir->orderBy("toplam_fyt","Asc");
 
-            }elseif ($_GET["sort"]=="price_highest"){
+            }elseif (\request("sort")=="price_highest"){
                 $urunleriGetir->orderBy("toplam_fyt","Desc");
             }
         }
+        
         $urunleriGetir = $urunleriGetir->paginate(10);
 
 

@@ -68,22 +68,24 @@
                         @foreach($urunleriGetir as $row)
                         <div class="col-md-4">
                             <!-- Product image-->
-                            <img class="card-img-top" src="{{asset($row->image)}}" alt="..." />
+                            <a href="{{route("site.urun-detay",$row->url)}}">
+                                <img class="card-img-top" src="{{asset($row->image)}}" alt="..." />
+                            </a>
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h5 class="fw-bolder"> <b>{{$row->title}}</b> </h5>
+                                    <h5 class="fw-bolder"> <b><a style="text-decoration: none;color: black" href="{{route("site.urun-detay",$row->url)}}">{{$row->title}}</a> </b> </h5>
                                     <hr>
                                     <!-- Product price-->
-                                    <span class="text-decoration-line-through">{{number_format($row->fyt,2,',','.')}} TL</span>
+                                    <del>
+                                        <span class="text-decoration-line-through">{{number_format($row->fyt,2,',','.')}} TL</span>
+                                    </del>
                                     <br>
-                                    <b>{{number_format($row->toplam_fyt,2,',','.')}} TL</b>
+                                    <small><b class="text-danger" >%{{$row->indirim_orani}}</b> </small>
+                                    <br>
+                                    <b class="text-success">{{number_format($row->toplam_fyt,2,',','.')}} TL</b>
                                 </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{{route("site.urun-detay",$row->url)}}">Detaylar</a></div>
                             </div>
                         </div>
                         @endforeach

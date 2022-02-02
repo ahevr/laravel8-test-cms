@@ -14,19 +14,22 @@
             <div class="row gx-4 gx-lg-5 align-items-center">
                 <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{asset($urunDetayGetir->image)}}" alt="..." /></div>
                 <div class="col-md-6">
-                    <div class="small mb-1">SKU: BST-498</div>
+                    <div class="small mb-1">SKU: {{$urunDetayGetir->stok_kodu}}</div>
+                    <div class="small mb-1">{{$urunDetayGetir->barkod}}</div>
                     <h1 class="display-5 fw-bolder">{{$urunDetayGetir->title}}</h1>
                     <div class="fs-5 mb-5">
-                        <b><div class="small mb-1">%{{$urunDetayGetir->indirim_orani}} İndirim</div></b>
-                        <span class="text-decoration-line-through">{{number_format($urunDetayGetir->fyt,2,',','.')}} TL</span>
-                        <span>{{number_format($urunDetayGetir->toplam_fyt,2,',','.')}} TL</span>
+                        <span class="text-decoration-line-through"><del>{{number_format($urunDetayGetir->fyt,2,',','.')}} TL</del></span>
+                        <br>
+                        <b>%{{$urunDetayGetir->indirim_orani}} İndirim</b>
+                        <span><h3><b class="text-success">{{number_format($urunDetayGetir->toplam_fyt,2,',','.')}} TL</b></h3></span>
                     </div>
                     <p class="lead">Açıklama: {{$urunDetayGetir->desc}}</p>
                     <p class="lead">Kategori: {{$urunDetayGetir->kategori_name}}</p>
                     <p class="lead">Renk:     {{$urunDetayGetir->renk_adi}}</p>
                     <div class="d-flex">
-                        <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
-                        <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                        <input class="form-control text-center me-3" id="inputQuantity" type="number" value="1" style="max-width: 4rem" />
+
+                        <button class="btn btn-outline-success" style="margin-left: 15px;" type="button">
                             <i class="bi-cart-fill me-1"></i>
                             Sepete Ekle
                         </button>

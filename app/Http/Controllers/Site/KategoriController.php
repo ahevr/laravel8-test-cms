@@ -18,7 +18,7 @@ class KategoriController extends Controller
 
         $urunler  = UrunlerModel::whereIn("kategori_id",$kategori)->paginate(10);
 
-        $categories     = KategorilerModel::where('parent_id', '=', 0)->get();
+        $categories  = KategorilerModel::where('parent_id', '=', 0)->get();
 
         $toplamUrunSayisi = UrunlerModel::count();
 

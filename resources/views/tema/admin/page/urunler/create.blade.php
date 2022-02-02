@@ -29,13 +29,20 @@
                 @csrf
                 <div class="card-body satir">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label>Ürün Adı<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" name="title" />
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Stok Kodu<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="stok_kodu" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label>Açıklama<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" name="desc"  />

@@ -11,6 +11,7 @@ use App\Models\Admin\RenklerModel;
 use App\Models\Admin\UrunlerImageModel;
 use App\Models\Admin\UrunlerModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class Urunler extends Controller{
 
@@ -56,8 +57,10 @@ class Urunler extends Controller{
             "kategori_id"   => $urunler->kategori_id,
             "kategori_name" => $kategoriName,
             "renk_adi"      => $renkName,
+            "stok_kodu"     => $urunler->stok_kodu,
+            "barkod"        => rand(1000000000000,9999999999999),
             "isActive"      => 1,
-            "image"         => imageUpload::singleUpload(strtolower(substr($urunler->title,0,15)),"urunler",$urunler->file("image")),
+            "image"         => imageUpload::singleUpload(strtolower(substr(mHelper::permalink($urunler->title),0,15)),"urunler",$urunler->file("image")),
 
         ]);
 
@@ -164,6 +167,7 @@ class Urunler extends Controller{
             "isActive" => 1,
             "renkid"   => $urunler->renkid,
             "kategori_id"   => $urunler->kategori_id,
+            "stok_kodu"     => $urunler->stok_kodu,
             "image"    => imageUpload::singleUploadUpdate(strtolower(substr($urunler->name,0,15)),"yazarlar",$urunler->file("image"),$data,"image"),
         ]);
 
