@@ -16,7 +16,7 @@ class KategoriController extends Controller
 
         $kategori = KategorilerModel::where("url",$url)->firstOrFail();
 
-        $urunler  = UrunlerModel::whereIn("kategori_id",$kategori)->paginate(10);
+        $urunler  = UrunlerModel::whereIn("kategoriler_id",$kategori)->paginate(10);
 
         $categories  = KategorilerModel::where('parent_id', '=', 0)->get();
 

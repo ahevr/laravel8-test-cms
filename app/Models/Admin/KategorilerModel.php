@@ -17,4 +17,10 @@ class KategorilerModel extends Model
 
     }
 
+    public function urunler(){
+
+        return $this->hasMany(UrunlerModel::class);
+
+    }
+
 }

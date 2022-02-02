@@ -42,8 +42,8 @@ class Urunler extends Controller{
         ]);
 
 
-        $kategoriName = KategorilerModel::where("id",$urunler->input("kategori_id"))->value("name");
-        $renkName     = RenklerModel::    where("id",$urunler->input("renkid"))->value("renk_adi");
+//        $kategoriName = KategorilerModel::where("id",$urunler->input("kategori_id"))->value("name");
+//        $renkName     = RenklerModel::    where("id",$urunler->input("renkid"))->value("renk_adi");
 
         $ekle = UrunlerModel::create([
 
@@ -53,10 +53,10 @@ class Urunler extends Controller{
             "fyt"           => $urunler->fyt,
             "indirim_orani" => $urunler->indirim_orani,
             "toplam_fyt"    => $urunler->toplam_fyt,
-            "renkid"        => $urunler->renkid,
-            "kategori_id"   => $urunler->kategori_id,
-            "kategori_name" => $kategoriName,
-            "renk_adi"      => $renkName,
+            "renkler_id"        => $urunler->renkler_id,
+            "kategoriler_id"   => $urunler->kategoriler_id,
+//            "kategori_name" => $kategoriName,
+//            "renk_adi"      => $renkName,
             "stok_kodu"     => $urunler->stok_kodu,
             "barkod"        => rand(1000000000000,9999999999999),
             "isActive"      => 1,
@@ -152,23 +152,25 @@ class Urunler extends Controller{
     public function update(Request $urunler,$id){
 
         $urunler->validate([
+
             "title" => "required|min:2|max:255",
         ]);
+
         $data = UrunlerModel::where("id","=",$id)->get();
 
         $update = UrunlerModel::where("id",$id)->update([
 
-            "url"      => mHelper::permalink($urunler->title),
-            "title"    => $urunler->title,
-            "desc"     => $urunler->desc,
-            "fyt"      => $urunler->fyt,
-            "indirim_orani" => $urunler->indirim_orani,
-            "toplam_fyt"    => $urunler->toplam_fyt,
-            "isActive" => 1,
-            "renkid"   => $urunler->renkid,
-            "kategori_id"   => $urunler->kategori_id,
-            "stok_kodu"     => $urunler->stok_kodu,
-            "image"    => imageUpload::singleUploadUpdate(strtolower(substr($urunler->name,0,15)),"yazarlar",$urunler->file("image"),$data,"image"),
+            "url"          => mHelper::permalink($urunler->title),
+            "title"        => $urunler->title,
+            "desc"         => $urunler->desc,
+            "fyt"          => $urunler->fyt,
+            "indirim_orani"=> $urunler->indirim_orani,
+            "toplam_fyt"   => $urunler->toplam_fyt,
+            "isActive"     => 1,
+            "renkler_id"        => $urunler->renkler_id,
+            "kategoriler_id"   => $urunler->kategoriler_id,
+            "stok_kodu"    => $urunler->stok_kodu,
+            "image"        => imageUpload::singleUploadUpdate(strtolower(substr($urunler->title,0,15)),"urunler",$urunler->file("image"),$data,"image"),
         ]);
 
         if ($update){

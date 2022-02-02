@@ -10,4 +10,10 @@ class RenklerModel extends Model
     protected $table = "renkler";
 
     protected $guarded = [];
+
+    public function urunler(){
+
+        return $this->hasMany(UrunlerModel::class);
+
+    }
 }

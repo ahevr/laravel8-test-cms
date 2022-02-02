@@ -24,8 +24,8 @@
                         <span><h3><b class="text-success">{{number_format($urunDetayGetir->toplam_fyt,2,',','.')}} TL</b></h3></span>
                     </div>
                     <p class="lead">Açıklama: {{$urunDetayGetir->desc}}</p>
-                    <p class="lead">Kategori: {{$urunDetayGetir->kategori_name}}</p>
-                    <p class="lead">Renk:     {{$urunDetayGetir->renk_adi}}</p>
+                    <p class="lead">Kategori: {{$urunDetayGetir->kategoriler->name}}</p>
+                    <p class="lead">Renk:     {{$urunDetayGetir->renkler->renk_adi}}</p>
                     <div class="d-flex">
                         <input class="form-control text-center me-3" id="inputQuantity" type="number" value="1" style="max-width: 4rem" />
 

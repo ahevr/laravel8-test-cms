@@ -69,7 +69,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Renk<span class="text-danger">*</span></label>
-                                <select name="renkid" class="form-control">
+                                <select name="renkler_id" class="form-control">
                                     <option value="#">Renk Seçiniz</option>
                                     @foreach($renk as $row)
                                         <option value="{{$row->id}}">{{$row->renk_adi}}</option>
@@ -80,7 +80,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Kategori<span class="text-danger">*</span></label>
-                                <select name="kategori_id" class="form-control">
+                                <select name="kategoriler_id" class="form-control">
                                     <option value="#">Kategori Seçiniz</option>
                                     @foreach($kategori as $row)
                                         <option value="{{$row->id}}">{{$row->name}}</option>
