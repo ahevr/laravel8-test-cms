@@ -17,15 +17,15 @@ class HomePageController extends Controller{
 
         $toplamUrunSayisi = UrunlerModel::count();
 
-        if  (strip_tags(trim(request()->has('sort') && !empty(\request("sort"))))) {
+        if  (strip_tags(trim(request()->has('sort') && !empty(request()->get("sort"))))) {
 
-            if (\request("sort")=="product_name_a_z"){
+            if (request()->get("sort")=="product_name_a_z"){
                 $urunleriGetir->orderBy("id","Desc");
 
-            } elseif (\request("sort")=="price_lowest"){
+            } elseif (request()->get("sort")=="price_lowest"){
                 $urunleriGetir->orderBy("toplam_fyt","Asc");
 
-            }elseif (\request("sort")=="price_highest"){
+            }elseif (request()->get("sort")=="price_highest"){
                 $urunleriGetir->orderBy("toplam_fyt","Desc");
             }
         }
