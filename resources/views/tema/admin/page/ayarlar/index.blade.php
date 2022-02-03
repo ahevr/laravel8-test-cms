@@ -38,7 +38,7 @@
                             @foreach($data as $row)
                                 <tr>
                                     <td>{{$row->id}}</td>
-                                    <td><img src="{{asset($row->site_logo)}}" width="150" alt="{{$row->site_adi}}"></td>
+                                    <td><img src="{{asset("tema/admin/uploads/ayarlar/".$row->site_logo)}}" width="150" alt="{{$row->site_adi}}"></td>
                                     <td>{{$row->site_adi}}</td>
                                     <td>{{$row->site_desc}}</td>
                                     <td>{{$row->site_mail}}</td>

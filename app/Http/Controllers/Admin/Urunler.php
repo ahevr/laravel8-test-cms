@@ -10,8 +10,9 @@ use App\Models\Admin\KategorilerModel;
 use App\Models\Admin\RenklerModel;
 use App\Models\Admin\UrunlerImageModel;
 use App\Models\Admin\UrunlerModel;
+//use Faker\Core\File;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
 
 class Urunler extends Controller{
 
@@ -35,36 +36,36 @@ class Urunler extends Controller{
 
     }
 
-    public function store(Request $urunler){
+    public function store(Request $request){
 
-        $urunler->validate([
+        $request->validate([
             "title" => "required|min:2|max:255",
+            "image" => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
+        $urunler = new UrunlerModel();
+        $urunler->url            =  mHelper::permalink($request->title);
+        $urunler->title          = $request->title;
+        $urunler->desc           = $request->desc;
+        $urunler->fyt            = $request->fyt;
+        $urunler->indirim_orani  = $request->indirim_orani;
+        $urunler->toplam_fyt     = $request->toplam_fyt;
+        $urunler->isActive       = 1;
+        $urunler->renkler_id     = $request->renkler_id;
+        $urunler->kategoriler_id = $request->kategoriler_id;
+        $urunler->stok_kodu      = $request->stok_kodu;
 
-//        $kategoriName = KategorilerModel::where("id",$urunler->input("kategori_id"))->value("name");
-//        $renkName     = RenklerModel::    where("id",$urunler->input("renkid"))->value("renk_adi");
+        if ($request->hasFile("image")){
+            $file = $request->file("image");
+            $extention = $file->getClientOriginalExtension();
+            $filename = time(). "." .$extention;
+            $file->move("tema/admin/uploads/urunler/",$filename);
+            $urunler->image = $filename;
+        }
 
-        $ekle = UrunlerModel::create([
+        $urunler->save();
 
-            "url"           => mHelper::permalink($urunler->title),
-            "title"         => $urunler->title ,
-            "desc"          => $urunler->desc,
-            "fyt"           => $urunler->fyt,
-            "indirim_orani" => $urunler->indirim_orani,
-            "toplam_fyt"    => $urunler->toplam_fyt,
-            "renkler_id"        => $urunler->renkler_id,
-            "kategoriler_id"   => $urunler->kategoriler_id,
-//            "kategori_name" => $kategoriName,
-//            "renk_adi"      => $renkName,
-            "stok_kodu"     => $urunler->stok_kodu,
-            "barkod"        => rand(1000000000000,9999999999999),
-            "isActive"      => 1,
-            "image"         => imageUpload::singleUpload(strtolower(substr(mHelper::permalink($urunler->title),0,15)),"urunler",$urunler->file("image")),
-
-        ]);
-
-        if ($ekle){
+        if ($urunler){
 
             return redirect("admin/urunler")->with("toast_success","Ürünler Başarılı Bir Şekilde Eklendi");
 
@@ -72,8 +73,6 @@ class Urunler extends Controller{
 
             return redirect("admin/urunler")->with("toast_error","Hata Var");
         }
-
-
 
     }
 
@@ -111,9 +110,19 @@ class Urunler extends Controller{
     public function delete($id){
 
 
-        $sil = UrunlerModel::where("id",$id)->delete();
+        $urunler = UrunlerModel::find($id);
 
-        if ($sil){
+        $destination = "tema/admin/uploads/urunler/".$urunler->image;
+
+        if (File::exists($destination)){
+
+            File::delete($destination);
+
+        }
+
+        $urunler->delete();
+
+        if ($urunler){
 
             return redirect("admin/urunler")->with("toast_warning","Ürünler Başarılı Bir Şekilde Silindi");
 
@@ -122,6 +131,7 @@ class Urunler extends Controller{
             return redirect("admin/urunler")->with("toast_success","Hata Var");
 
         }
+
 
 
 
@@ -149,33 +159,39 @@ class Urunler extends Controller{
 
     }
 
-    public function update(Request $urunler,$id){
+    public function update(Request $request ,$id){
 
-        $urunler->validate([
+        $urunler = UrunlerModel::find($id);
+        $urunler->url            =  mHelper::permalink($request->title);
+        $urunler->title          = $request->title;
+        $urunler->desc           = $request->desc;
+        $urunler->fyt            = $request->fyt;
+        $urunler->indirim_orani  = $request->indirim_orani;
+        $urunler->toplam_fyt     = $request->toplam_fyt;
+        $urunler->renkler_id     = $request->renkler_id;
+        $urunler->kategoriler_id = $request->kategoriler_id;
+        $urunler->stok_kodu      = $request->stok_kodu;
 
-            "title" => "required|min:2|max:255",
-        ]);
+        if ($request->hasFile("image")){
+            $destination = "tema/admin/uploads/urunler/".$urunler->image;
+            if (File::exists($destination)){
 
-        $data = UrunlerModel::where("id","=",$id)->get();
+                File::delete($destination);
 
-        $update = UrunlerModel::where("id",$id)->update([
+            }
+            $file = $request->file("image");
+            $extention = $file->getClientOriginalExtension();
+            $filename = time(). "." .$extention;
+            $file->move("tema/admin/uploads/urunler/",$filename);
+            $urunler->image = $filename;
+        }
 
-            "url"          => mHelper::permalink($urunler->title),
-            "title"        => $urunler->title,
-            "desc"         => $urunler->desc,
-            "fyt"          => $urunler->fyt,
-            "indirim_orani"=> $urunler->indirim_orani,
-            "toplam_fyt"   => $urunler->toplam_fyt,
-            "isActive"     => 1,
-            "renkler_id"        => $urunler->renkler_id,
-            "kategoriler_id"   => $urunler->kategoriler_id,
-            "stok_kodu"    => $urunler->stok_kodu,
-            "image"        => imageUpload::singleUploadUpdate(strtolower(substr($urunler->title,0,15)),"urunler",$urunler->file("image"),$data,"image"),
-        ]);
+        $urunler->update();
 
-        if ($update){
 
-            return redirect("admin/urunler")->with("toast_success","Ürünler Başarılı Bir Şekilde Güncellendi");
+        if ($urunler){
+
+            return redirect("admin/urunler")->with("toast_success","Ürünler Başarılı Bir Şekilde Eklendi");
 
         } else {
 
@@ -229,17 +245,25 @@ class Urunler extends Controller{
 
     }
 
-    public function galeriSet(Request $urunler,$id){
+    public function galeriSet(Request $request,$id){
+
+        $urunler = new UrunlerImageModel();
+
+        $urunler->urunler_id  = $request->id;
+        $urunler->isActive    = 1;
+
+        if ($request->hasFile("image")){
+            $file = $request->file("image");
+            $extention = $file->getClientOriginalExtension();
+            $filename = time(). "." .$extention;
+            $file->move("tema/admin/uploads/urunler/",$filename);
+            $urunler->image = $filename;
+        }
+
+        $urunler->save();
 
 
-        $ekle = UrunlerImageModel::create([
-            "urunler_id"  => $urunler->id,
-            "isActive"    => 1,
-            "image" => imageUpload::singleUpload(strtolower(($urunler->id)),"urunler",$urunler->file("image")),
-
-        ]);
-
-        if ($ekle){
+        if ($urunler){
 
             return redirect("admin/urunler/galeriForm/$id")->with("toast_success","Ürünler'ın Fotoğrafı Başarılı Bir Şekilde Eklendi");
 

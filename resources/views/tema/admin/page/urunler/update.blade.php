@@ -15,14 +15,14 @@
                     </div>
                 </div>
             </div>
-            <form action="{{route("admin.urunler.duzenle.post",$data->id)}}" method="post">
+            <form action="{{route("admin.urunler.duzenle.post",$data->id)}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body satir">
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <img src="{{asset($data->image) }}" width="300" height="300" alt="">
-                                <input type="file" name="image" class="form-control">
+                                <input type="file" name="image" class="form-control-file" id="exampleFormControlFile1">
+                                <img src="{{asset("tema/admin/uploads/urunler/".$data->image) }}" width="300" height="300" alt="">
                             </div>
                         </div>
                         <div class="col-md-8">

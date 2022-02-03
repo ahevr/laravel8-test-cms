@@ -20,7 +20,7 @@
             @foreach($urunler as $row)
                 <div class="col-md-3">
                     <!-- Product image-->
-                    <img class="card-img-top" src="{{asset($row->image)}}" alt="..." />
+                    <img class="card-img-top" src="{{asset("tema/admin/uploads/urunler/".$row->image)}}" alt="..." />
                     <!-- Product details-->
                     <div class="card-body p-4">
                         <div class="text-center">

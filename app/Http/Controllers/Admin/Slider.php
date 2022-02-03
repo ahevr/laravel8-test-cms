@@ -39,20 +39,26 @@ class Slider extends Controller
 
         ]);
 
-        $ekle = SliderModel::create(
-            [
-                "baslik" => $request->baslik,
-                "desc"   => $request->desc,
-                "buton"  => $request->buton == "on" ? 1 : 0,
-                "buton_url" => $request->buton_url,
-                "buton_adi" => $request->buton_adi,
-                "isActive" => 1,
-                "url"      => mHelper::permalink($request->baslik),
-                "image"    => imageUpload::singleUpload(strtolower(substr($request->baslik,0,15)),"slider",$request->file("image")),
-            ]
-        );
+        $slider = new SliderModel();
+        $slider->url   =  mHelper::permalink($request->baslik);
+        $slider->baslik = $request->baslik;
+        $slider->desc = $request->desc;
+        $slider->buton = $request->buton == "on" ? 1 : 0;
+        $slider->buton_url = $request->buton_url;
+        $slider->buton_adi = $request->buton_adi;
+        $slider->isActive       = 1;
 
-        if ($ekle){
+        if ($request->hasFile("image")){
+            $file = $request->file("image");
+            $extention = $file->getClientOriginalExtension();
+            $filename = time(). "." .$extention;
+            $file->move("tema/admin/uploads/slider/",$filename);
+            $slider->image = $filename;
+        }
+
+        $slider->save();
+
+        if ($slider){
 
             return redirect("admin/slider")->with("toast_success","Slider Başarılı Bir Şekilde Eklendi");
 

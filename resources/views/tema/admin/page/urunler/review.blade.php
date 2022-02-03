@@ -11,7 +11,7 @@
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">
-                            <img src="{{asset($data->image)}}" width="400" alt="">
+                            <img src="{{asset("tema/admin/uploads/urunler/".$data->image)}}" width="400" alt="">
                             <hr>
                             <p>Bu ekran sadece ürün ID'si : <b>{{$data->id}}</b> olan ve ürün adı : <b>{{$data->title}}</b> olan ürünün <b> ön izlemesidir</b></p>
                             <small>Ürün bilgileri değişikliği buradan yapılmamaktadır <br>Lütfen ilgili ürün değişikliklerini güncelleme sayfasından yapınız</small>
@@ -45,7 +45,7 @@
                             <div class="form-group">
                                 <label><span class="text-danger"></span></label>
                                 <br>
-                                <img src="{{asset($data->image) }}" width="300" height="300" alt="">
+                                <img src="{{asset("tema/admin/uploads/urunler/".$data->image) }}" width="300" height="300" alt="">
                             </div>
                         </div>
                         <div class="col-md-8">

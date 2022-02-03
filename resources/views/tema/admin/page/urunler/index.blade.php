@@ -58,7 +58,7 @@
                                 <tr class="text-center">
                                     <td>#{{$row->id}}</td>
                                     <td>
-                                        <img src="{{asset($row->image)}}" width="150" alt="{{$row->title}}">
+                                        <img src="{{asset("tema/admin/uploads/urunler/".$row->image)}}" width="150" alt="{{$row->title}}">
                                     </td>
                                     <td><a href="{{route("admin.urunler.inceleForm",$row->id)}}" style="color: black"><b>{{substr($row->title,0,30)}}....</b></a></td>
                                     <td>{{ substr($row->desc,0,35) ."......." }}</td>
@@ -82,11 +82,13 @@
                                         <a href="{{route("admin.urunler.galeriForm",$row->id)}}"
                                            class="btn btn-sm btn-warning"><i class="flaticon2-image-file"></i>
                                         </a>
+
                                         <button
                                                 data-url="{{route("admin.urunler.sil",$row->id)}}"
                                                 class="btn btn-sm btn-danger silButton">
                                             <i class="flaticon-delete"></i></i>
                                         </button>
+
                                     </td>
                                 </tr>
                             @endforeach

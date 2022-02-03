@@ -37,7 +37,7 @@
                                 <tr>
                                     <th scope="row">{{$row->id}}</th>
                                     <td>
-                                        <img src="{{asset($row->image)}}" width="150">
+                                        <img src="{{asset("tema/admin/uploads/slider/".$row->image)}}" width="150">
                                     </td>
                                     <td>{{$row->desc}}</td>
                                     <td>

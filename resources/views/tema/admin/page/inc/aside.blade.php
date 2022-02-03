@@ -2,7 +2,7 @@
     <div class="brand flex-column-auto" id="kt_brand">
         <a href="/admin" class="brand-logo">
 {{--            <img alt="Logo" src="{{asset("tema/admin")}}/media/logos/logo-light.png" />--}}
-            <img alt="Logo" src="{{asset($ayar->site_logo)}}" width="70" />
+            <img alt="Logo" src="{{asset("tema/admin/uploads/ayarlar/".$ayar->site_logo)}}" width="70" />
         </a>
 
         <header class="mt-3 text-white">

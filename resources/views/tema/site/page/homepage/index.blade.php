@@ -69,7 +69,7 @@
                         <div class="col-md-4">
                             <!-- Product image-->
                             <a href="{{route("site.urun-detay",$row->url)}}">
-                                <img class="card-img-top" src="{{asset($row->image)}}" alt="..." />
+                                <img class="card-img-top" src="{{asset("tema/admin/uploads/urunler/".$row->image)}}" alt="..." />
                             </a>
                             <!-- Product details-->
                             <div class="card-body p-4">

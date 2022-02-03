@@ -63,7 +63,7 @@
                                     {{$value->id}}
                                 </td>
                                 <td>
-                                    <img width="100" src="{{asset($value->image) }}" alt="" class="img-responsive">
+                                    <img width="100" src="{{asset("tema/admin/uploads/urunler/".$value->image) }}" alt="" class="img-responsive">
                                 </td>
                                 <td>
                                     <button
