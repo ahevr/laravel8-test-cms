@@ -11,7 +11,7 @@ class CikisController extends Controller
 
         auth()->logout();
 
-        return redirect("/login")->with("toast_success","Çıkış Başarılı");
+        return redirect("login")->with("toast_success","Çıkış Başarılı");
 
 
     }

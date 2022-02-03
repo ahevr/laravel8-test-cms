@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin\KategorilerModel;
 use App\Models\Admin\UrunlerModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomePageController extends Controller{
 
@@ -29,8 +30,8 @@ class HomePageController extends Controller{
                 $urunleriGetir->orderBy("toplam_fyt","Desc");
             }
         }
-        
-        $urunleriGetir = $urunleriGetir->paginate(10);
+
+        $urunleriGetir = $urunleriGetir->paginate(9);
 
 
         return view("tema.site.page.homepage.index",compact("urunleriGetir","categories","toplamUrunSayisi"));

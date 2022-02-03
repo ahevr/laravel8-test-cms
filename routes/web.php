@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use RealRashid\SweetAlert\Facades\Alert;
 
-
+//Auth::routes();
 
 
 
@@ -19,16 +19,10 @@ Route::group(["namespace"=>"site","as" => "site."],function (){
 
 
 
-
-
-
-
-
 // ADMİN Route** //
 Route::group(["namespace"=>"admin","prefix"=>"admin","as" => "admin.","middleware"=>["auth"]],function (){
 
     Route::get("/","dashboardcontroller@index")->name("index");
-
     Route::post('/cikis', 'cikiscontroller@index')->name('cikis');
 
     // Ürünler Route** //
@@ -89,12 +83,6 @@ Route::group(["namespace"=>"admin","prefix"=>"admin","as" => "admin.","middlewar
         Route::post( "/duzenle/{id}"    , "slider@update")->name("duzenle.post");
         Route::get ( "/status/{id}"     , "slider@status")->name("status");
     });
-
-
-
-
-
-
 
 
 
