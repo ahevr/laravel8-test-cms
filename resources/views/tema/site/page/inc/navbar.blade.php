@@ -29,6 +29,37 @@
             </li>
         </ul>
     </div>
+
+
+
+        <div class="row mr-5">
+
+            @auth
+                <div class="col-md-3">
+                    <span>{{Auth::guard("uye")->user()->name}} </span>
+                </div>
+            @endauth
+
+            <div class="col-md-3"><a href="{{route("site.uye-login")}}">Giriş</a></div>
+            <div class="col-md-3"><a href="{{route("site.uye-register")}}">Kayıt</a></div>
+                <div class="col-md-3">
+
+                    <form action="{{route("site.uye-logout")}}" method="post">
+                        @csrf
+                        <button type="submit" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">Çıkış Yap</button>
+
+                    </form>
+                </div>
+
+
+
+
+
+        </div>
+
+
+
+
     <div class="co">
         <form style="display: flex;" action="{{route("site.search")}}">
             <input class="form-control mr-sm-2" type="search" placeholder="Ara.." name="keyword" aria-label="Search">

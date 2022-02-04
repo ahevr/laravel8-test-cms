@@ -9,12 +9,13 @@
     </div>
     <!--end::Login Header-->
     <!--begin::Login Sign in form-->
+    LOGİN_USER
     <div class="login-signin">
         <div class="mb-20">
             <h3 class="opacity-40 font-weight-normal">Giriş Yap</h3>
             <p class="opacity-40">Lütfen Giriş Bilgilerini Doldurun</p>
         </div>
-        <form class="form" action="{{route("admin.check")}}" method="post" >
+        <form class="form" action="{{route("site.uye-check")}}" method="post" >
             @csrf
             <div class="form-group">
                 <input class="form-control h-auto text-white bg-white-o-5 rounded-pill border-0 py-4 px-8" type="text" placeholder="Email" name="email" autocomplete="off" />

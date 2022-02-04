@@ -10,7 +10,46 @@ use Illuminate\Support\Facades\Auth;
 
 class HomePageController extends Controller{
 
+    public function check(Request $request){
+
+        $request->validate(["email"=>"required|email|exists:uyes,email"]);
+
+        $creds = $request->only("email","password");
+
+        if (Auth::guard("uye")->attempt($creds)){
+
+            return redirect()->route("site.index");
+
+        }else{
+
+            return redirect()->route("site.uye-login");
+        }
+
+    }
+
+
+    public function login(){
+
+        return view("auth.login-user");
+
+    }
+    protected function register(){
+
+        return view("auth.register-user");
+
+    }
+
+    public function logout(){
+
+        Auth::guard("uye")->logout();
+
+
+        return redirect("/")->with("toast_success","Çıkış Başarılı");
+    }
+
+
     public function index(){
+
 
         $categories       = KategorilerModel::where('parent_id', '=', 0)->get();
 

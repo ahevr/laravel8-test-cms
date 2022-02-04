@@ -20,7 +20,7 @@
             </div>
             <div class="d-flex flex-column">
                 <a href="#" class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">
-                    {{Auth::user()->name}}
+                    {{Auth::guard("web")->user()->name}}
                 </a>
                 <div class="text-muted mt-1"></div>
                 <div class="navi mt-2">
@@ -40,14 +40,17 @@
 										</span>
 									</span>
 									<span class="navi-text text-muted text-hover-primary">
-                                        {{Auth::user()->email}}
+                                        {{Auth::guard("web")->user()->email}}
                                     </span>
 								</span>
                     </a>
 
-                    <form action="{{route("admin.cikis")}}" method="post">
+
+
+                    <form action="{{route("admin.logout")}}" method="post">
                         @csrf
                         <button type="submit" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">Çıkış Yap</button>
+
                     </form>
 {{--                    <a href="" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5"></a>--}}
 

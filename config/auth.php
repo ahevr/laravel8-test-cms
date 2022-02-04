@@ -17,6 +17,10 @@ return [
         'guard' => 'web',
         'passwords' => 'users',
     ],
+    'uye'=>[
+        'driver'=>'eloquent',
+        'model'=>App\Models\Uye::class,
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -39,6 +43,15 @@ return [
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
+        ],
+        'api' => [
+            'driver' => 'token',
+            'provider' => 'users',
+            'hash' => false,
+        ],
+        'uye'=>[
+            'driver'=>'session',
+            'provider'=>'uyes',
         ],
     ],
 
@@ -69,6 +82,10 @@ return [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
+        'uyes'=>[
+            'driver'=>'eloquent',
+            'model'=>App\Models\Uye::class,
+        ],
     ],
 
     /*
@@ -92,6 +109,10 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
+        ],
+        'uyes'=>[
+            'driver'=>'eloquent',
+            'model'=>App\Models\Uye::class,
         ],
     ],
 

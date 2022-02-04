@@ -54,14 +54,7 @@ class Urunler extends Controller{
         $urunler->renkler_id     = $request->renkler_id;
         $urunler->kategoriler_id = $request->kategoriler_id;
         $urunler->stok_kodu      = $request->stok_kodu;
-
-        if ($request->hasFile("image")){
-            $file = $request->file("image");
-            $extention = $file->getClientOriginalExtension();
-            $filename = time(). "." .$extention;
-            $file->move("tema/admin/uploads/urunler/",$filename);
-            $urunler->image = $filename;
-        }
+        $urunler->image = $request->file('image');
 
         $urunler->save();
 
@@ -171,20 +164,7 @@ class Urunler extends Controller{
         $urunler->renkler_id     = $request->renkler_id;
         $urunler->kategoriler_id = $request->kategoriler_id;
         $urunler->stok_kodu      = $request->stok_kodu;
-
-        if ($request->hasFile("image")){
-            $destination = "tema/admin/uploads/urunler/".$urunler->image;
-            if (File::exists($destination)){
-
-                File::delete($destination);
-
-            }
-            $file = $request->file("image");
-            $extention = $file->getClientOriginalExtension();
-            $filename = time(). "." .$extention;
-            $file->move("tema/admin/uploads/urunler/",$filename);
-            $urunler->image = $filename;
-        }
+        $urunler->image = $request->file('image');
 
         $urunler->update();
 
@@ -252,13 +232,15 @@ class Urunler extends Controller{
         $urunler->urunler_id  = $request->id;
         $urunler->isActive    = 1;
 
-        if ($request->hasFile("image")){
-            $file = $request->file("image");
-            $extention = $file->getClientOriginalExtension();
-            $filename = time(). "." .$extention;
-            $file->move("tema/admin/uploads/urunler/",$filename);
-            $urunler->image = $filename;
-        }
+        $urunler->image = $request->file('image');
+
+//        if ($request->hasFile("image")){
+//            $file = $request->file("image");
+//            $extention = $file->getClientOriginalExtension();
+//            $filename = time(). "." .$extention;
+//            $file->move("tema/admin/uploads/urunler/",$filename);
+//            $urunler->image = $filename;
+//        }
 
         $urunler->save();
 
