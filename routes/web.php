@@ -10,12 +10,18 @@ use RealRashid\SweetAlert\Facades\Alert;
 // SİTE Route** //
 Route::group(["namespace"=>"site","as" => "site."],function (){
 
+
+
         Route::get ("/","HomePageController@index")->name("index");
         Route::get ("uye/login","HomePageController@login")->name("uye-login");
         Route::post("uye/check","HomePageController@check")->name("uye-check");
         Route::get ("uye/register","HomePageController@register")->name("uye-register");
+        Route::post("uye/register","HomePageController@create")->name("uye-register");
+
+
 
     Route::middleware(["auth:uye"])->group(function (){
+
         Route::post('/logout', 'HomePageController@logout')->name('uye-logout');
         Route::get ("/urun-detay/{url}","UrunlerPageController@index"   )->name("urun-detay");
         Route::get ("/search"          ,"search@index"                  )->name("search");
@@ -33,9 +39,10 @@ Route::group(["namespace"=>"admin","prefix"=>"admin","as" => "admin."],function 
 
     Route::middleware(["guest:web","PreventBackHistory"])->group(function (){
 
-        Route::get ("/login","dashboardcontroller@login")->name("login");
-        Route::post("/check","dashboardcontroller@check")->name("check");
-        Route::get ("/register","dashboardcontroller@register")->name("register");
+        Route::get ("/login","DashboardController@login")->name("login");
+        Route::post("/check","DashboardController@check")->name("check");
+//        Route::get ("/register","DashboardController@register")->name("register");
+//        Route::post ("/register","DashboardController@create")->name("register");
 
     });
 
@@ -103,6 +110,25 @@ Route::group(["namespace"=>"admin","prefix"=>"admin","as" => "admin."],function 
             Route::post( "/duzenle/{id}"    , "slider@update")->name("duzenle.post");
             Route::get ( "/status/{id}"     , "slider@status")->name("status");
         });
+
+        Route::group(["prefix" => "uyeler", "as"=>"uyeler."],function (){
+            Route::get("/","uyeler@index")->name("index");
+        });
+
+        Route::group(["prefix" => "user", "as"=>"user."],function (){
+            Route::get("/","user@index")->name("index");
+            Route::get ( "/ekleForm"        , "user@create")->name("ekleForm");
+            Route::post( "/ekle"            , "DashboardController@create" )->name("ekle.post");
+        });
+
+
+
+
+
+
+
+
+
     });
 
 

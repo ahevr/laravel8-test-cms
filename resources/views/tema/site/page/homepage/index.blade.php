@@ -90,7 +90,14 @@
                         </div>
                         @endforeach
                     </div>
-                {{ $urunleriGetir->links() }}
+
+                @if  (request()->has('sort') && !empty(request()->get("sort")))
+
+                    {{$urunleriGetir->appends(["sort" => request()->get("sort") ])->links()}}
+                @else
+                    {{$urunleriGetir->links()}}
+
+                    @endif
             </div>
         </div>
     </div>

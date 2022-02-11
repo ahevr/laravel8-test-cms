@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin\AyalarModel;
+use App\Models\User;
+use App\Models\Uye;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class DashboardController extends Controller
 {
@@ -28,17 +31,42 @@ class DashboardController extends Controller
 
     }
 
+    public function create(Request $request){
+
+        $request->validate([
+            "name" => "required|min:2|max:255",
+            "email" => "required",
+        ]);
+        $adminRegister = new User();
+
+        $adminRegister->name = $request->name;
+        $adminRegister->email = $request->email;
+        $adminRegister->password =  Hash::make($request->password);
+
+        $save = $adminRegister->save();
+
+        if ($save){
+            return redirect("admin/login");
+        } else {
+            return redirect("admin/login");
+        }
+
+    }
+
+
+
 
     public function login(){
 
         return view("auth.login");
 
     }
-    protected function register(){
+    public function register(){
 
         return view("auth.register");
 
     }
+
 
     public function logout(){
 

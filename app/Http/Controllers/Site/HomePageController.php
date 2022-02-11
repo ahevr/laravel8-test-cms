@@ -5,14 +5,30 @@ namespace App\Http\Controllers\Site;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\KategorilerModel;
 use App\Models\Admin\UrunlerModel;
+use App\Models\Uye;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
 
 class HomePageController extends Controller{
 
     public function check(Request $request){
 
-        $request->validate(["email"=>"required|email|exists:uyes,email"]);
+        $request->validate(
+
+            ["email"=>"required|email|exists:uyes,email",
+                'password' =>
+                    ['required', 'string',
+                        Password::min(6)
+                            ->mixedCase()
+                            ->numbers()
+                            ->symbols()
+                            ->uncompromised(),
+                        'confirmed'
+                    ],
+                ]
+            );
 
         $creds = $request->only("email","password");
 
@@ -47,9 +63,40 @@ class HomePageController extends Controller{
         return redirect("/")->with("toast_success","Çıkış Başarılı");
     }
 
+    public function create(Request $request){
+
+        $request->validate([
+            "name" => "required|min:2|max:255",
+            "email" => "required",
+            'password' => [
+                'required',
+                'string',
+                Password::min(6)
+                    ->mixedCase()
+                    ->numbers()
+                    ->symbols()
+                    ->uncompromised(),
+                'confirmed'
+            ],
+        ]);
+        $adminRegister = new Uye();
+
+        $adminRegister->name = $request->name;
+        $adminRegister->email = $request->email;
+        $adminRegister->password =  Hash::make($request->password);
+
+        $save = $adminRegister->save();
+
+        if ($save){
+            return redirect("admin/login");
+        } else {
+            return redirect("admin/login");
+        }
+
+    }
+
 
     public function index(){
-
 
         $categories       = KategorilerModel::where('parent_id', '=', 0)->get();
 
@@ -67,6 +114,9 @@ class HomePageController extends Controller{
 
             }elseif (request()->get("sort")=="price_highest"){
                 $urunleriGetir->orderBy("toplam_fyt","Desc");
+            }
+            else{
+                $urunleriGetir->ordeyBy("id","Desc");
             }
         }
 

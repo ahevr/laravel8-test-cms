@@ -22,6 +22,7 @@
             </div>
             <div class="form-group">
                 <input class="form-control h-auto text-white bg-white-o-5 rounded-pill border-0 py-4 px-8" type="password" placeholder="Password" name="password" />
+                <span class="text-danger">@error("password"){{$message}}@enderror</span>
             </div>
 
             <div class="form-group text-center mt-10">
@@ -36,9 +37,9 @@
                 <a href="/forgot-password" id="kt_login_forgot" class="text-white font-weight-bold">Şifremi Unuttum ?</a>
             </div>
         </form>
-        <div class="mt-10">
-            <span class="opacity-40 mr-4">Hesabın Yok Mu ?</span>
-            <a href="{{route("admin.register")}}" id="kt_login_signup" class="text-white opacity-30 font-weight-normal">Kayıt Ol</a>
-        </div>
+{{--        <div class="mt-10">--}}
+{{--            <span class="opacity-40 mr-4">Hesabın Yok Mu ?</span>--}}
+{{--            <a href="{{route("admin.register")}}" id="kt_login_signup" class="text-white opacity-30 font-weight-normal">Kayıt Ol</a>--}}
+{{--        </div>--}}
     </div>
 @endsection

@@ -23,7 +23,7 @@
             <h3 class="opacity-40 font-weight-normal">Kayıt Ol</h3>
             <p class="opacity-40">Lütfen Kayıt Bilgilerini Doldurun</p>
         </div>
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" action="{{ route('site.uye-register') }}">
             @csrf
             <div class="form-group">
                 <input class="form-control h-auto text-white bg-white-o-5 rounded-pill border-0 py-4 px-8" type="text" placeholder="Ad Soyad" name="name" autocomplete="off" />

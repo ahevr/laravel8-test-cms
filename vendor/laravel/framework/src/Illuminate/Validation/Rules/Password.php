@@ -283,19 +283,19 @@ class Password implements Rule, DataAwareRule, ValidatorAwareRule
             $value = (string) $value;
 
             if ($this->mixedCase && ! preg_match('/(\p{Ll}+.*\p{Lu})|(\p{Lu}+.*\p{Ll})/u', $value)) {
-                $validator->errors()->add($attribute, 'The :attribute must contain at least one uppercase and one lowercase letter.');
+                $validator->errors()->add($attribute, 'Şifre en az bir Büyük Harf ve Bir Küçük Harf içermelidir.');
             }
 
             if ($this->letters && ! preg_match('/\pL/u', $value)) {
-                $validator->errors()->add($attribute, 'The :attribute must contain at least one letter.');
+                $validator->errors()->add($attribute, 'Şifreniz en az bir harf içermelidir.');
             }
 
             if ($this->symbols && ! preg_match('/\p{Z}|\p{S}|\p{P}/u', $value)) {
-                $validator->errors()->add($attribute, 'The :attribute must contain at least one symbol.');
+                $validator->errors()->add($attribute, 'Şifre en az bir sembol içermelidir..');
             }
 
             if ($this->numbers && ! preg_match('/\pN/u', $value)) {
-                $validator->errors()->add($attribute, 'The :attribute must contain at least one number.');
+                $validator->errors()->add($attribute, 'Şifreniz en az bir sayı içermelidir.');
             }
         });
 
