@@ -1,6 +1,16 @@
 @extends("tema.admin.page.giris.loginMaster")
 @section("content")
 
+    @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <!--begin::Login Header-->
     <div class="d-flex flex-center mb-15">
         <a href="#">
@@ -39,7 +49,7 @@
         </form>
         <div class="mt-10">
             <span class="opacity-40 mr-4">Hesabın Yok Mu ?</span>
-            <a href="{{route("admin.register")}}" id="kt_login_signup" class="text-white opacity-30 font-weight-normal">Kayıt Ol</a>
+            <a href="{{route("site.uye-register")}}" id="kt_login_signup" class="text-white opacity-30 font-weight-normal">Kayıt Ol</a>
         </div>
     </div>
 @endsection

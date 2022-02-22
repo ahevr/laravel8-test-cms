@@ -45,7 +45,7 @@
         </form>
         <div class="mt-10">
             <span class="opacity-40 mr-4">Bir Hesabınız Var Mı ?</span>
-            <a href="{{ route('login') }}" id="kt_login_signup" class="text-white opacity-30 font-weight-normal">Giriş Yap</a>
+            <a href="{{ route('site.uye-login') }}" id="kt_login_signup" class="text-white opacity-30 font-weight-normal">Giriş Yap</a>
         </div>
     </div>
     <!--end::Login Sign in form-->

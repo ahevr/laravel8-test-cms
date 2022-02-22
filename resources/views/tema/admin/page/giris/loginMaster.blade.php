@@ -17,9 +17,10 @@
         </div>
     </div>
 </div>
+
 @include('sweetalert::alert')
+
 @include("tema.admin.page.giris.login_inc.script")
 
 </body>
-
 </html>

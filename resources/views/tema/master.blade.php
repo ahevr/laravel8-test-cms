@@ -119,6 +119,7 @@
 </div>
 <!--end::Scrolltop-->
 @include('sweetalert::alert')
+
 @include("tema.admin.page.inc.page_script")
 
 </body>

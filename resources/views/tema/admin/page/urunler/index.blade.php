@@ -23,6 +23,7 @@
                 </div>
             </div>
             <div class="card-body">
+
                 <form action="{{route("admin.urunler.search")}}" >
                     <div class="row">
                         <div class="col-md-12">
@@ -37,6 +38,7 @@
                         </div>
                     </div>
                 </form>
+
                 <div class="example mb-10">
                     <div class="example-preview">
                         <table class="table table-hover">
@@ -86,7 +88,7 @@
                                         <button
                                                 data-url="{{route("admin.urunler.sil",$row->id)}}"
                                                 class="btn btn-sm btn-danger silButton">
-                                            <i class="flaticon-delete"></i></i>
+                                            <i class="flaticon-delete"></i>
                                         </button>
 
                                     </td>

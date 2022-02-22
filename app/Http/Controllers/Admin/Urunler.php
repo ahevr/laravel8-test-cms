@@ -54,7 +54,7 @@ class Urunler extends Controller{
         $urunler->renkler_id     = $request->renkler_id;
         $urunler->kategoriler_id = $request->kategoriler_id;
         $urunler->stok_kodu      = $request->stok_kodu;
-        $urunler->image = $request->file('image');
+        $urunler->image          = $request->file('image');
 
         $urunler->save();
 

@@ -3,22 +3,15 @@
 use Illuminate\Support\Facades\Route;
 use RealRashid\SweetAlert\Facades\Alert;
 
-//Auth::routes();
-
-
 
 // SİTE Route** //
 Route::group(["namespace"=>"site","as" => "site."],function (){
-
-
 
         Route::get ("/","HomePageController@index")->name("index");
         Route::get ("uye/login","HomePageController@login")->name("uye-login");
         Route::post("uye/check","HomePageController@check")->name("uye-check");
         Route::get ("uye/register","HomePageController@register")->name("uye-register");
         Route::post("uye/register","HomePageController@create")->name("uye-register");
-
-
 
     Route::middleware(["auth:uye"])->group(function (){
 
@@ -30,9 +23,6 @@ Route::group(["namespace"=>"site","as" => "site."],function (){
     });
 
 });
-
-
-
 
 // ADMİN Route** //
 Route::group(["namespace"=>"admin","prefix"=>"admin","as" => "admin."],function (){

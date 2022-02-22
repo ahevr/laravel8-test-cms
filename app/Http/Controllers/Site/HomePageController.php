@@ -15,20 +15,7 @@ class HomePageController extends Controller{
 
     public function check(Request $request){
 
-        $request->validate(
-
-            ["email"=>"required|email|exists:uyes,email",
-                'password' =>
-                    ['required', 'string',
-                        Password::min(6)
-                            ->mixedCase()
-                            ->numbers()
-                            ->symbols()
-                            ->uncompromised(),
-                        'confirmed'
-                    ],
-                ]
-            );
+        $request->validate(["email"=>"required|email|exists:uyes,email"]);
 
         $creds = $request->only("email","password");
 
