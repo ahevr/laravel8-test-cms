@@ -27,7 +27,7 @@
 </section>
 
 <!-- Footer-->
-
+@include('sweetalert::alert')
 @include("tema.site.page.inc.footer")
 
 <!-- Bootstrap core JS-->

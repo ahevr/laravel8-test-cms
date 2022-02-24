@@ -42,6 +42,7 @@
                     <button type="submit" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">Çıkış Yap</button>
                 </form>
             </div>
+        <div class="col-md-2"><a class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5" href="{{route("site.sepet")}}">Sepet</a></div>
         @else
             <div class="row mr-5">
                 <div class="col-md-3"><a href="{{route("site.uye-login")}}">Giriş</a></div>
@@ -63,4 +64,5 @@
             <button class="btn btn-success " style="margin-left: 5px" type="submit"><i class="fa fa-search"></i></button>
         </form>
     </div>
+
 </nav>

@@ -27,12 +27,11 @@
                     <p class="lead">Kategori: {{$urunDetayGetir->kategoriler->name}}</p>
                     <p class="lead">Renk:     {{$urunDetayGetir->renkler->renk_adi}}</p>
                     <div class="d-flex">
-                        <input class="form-control text-center me-3" id="inputQuantity" type="number" value="1" style="max-width: 4rem" />
-
-                        <button class="btn btn-outline-success" style="margin-left: 15px;" type="button">
-                            <i class="bi-cart-fill me-1"></i>
-                            Sepete Ekle
-                        </button>
+                        <form action="{{route("site.sepetekle")}}" method="POST">
+                            @csrf
+                            <input type="hidden" name="id" value="{{$urunDetayGetir->id}}">
+                            <input type="submit" class="btn btn-outline-success" value="Sepete Ekle">
+                        </form>
                     </div>
                 </div>
             </div>

@@ -13,13 +13,18 @@ Route::group(["namespace"=>"site","as" => "site."],function (){
         Route::get ("uye/register","HomePageController@register")->name("uye-register");
         Route::post("uye/register","HomePageController@create")->name("uye-register");
 
-    Route::middleware(["auth:uye"])->group(function (){
-
-        Route::post('/logout', 'HomePageController@logout')->name('uye-logout');
         Route::get ("/urun-detay/{url}","UrunlerPageController@index"   )->name("urun-detay");
         Route::get ("/search"          ,"search@index"                  )->name("search");
         Route::get ("/kategori/{url}"  ,"KategoriController@index"      )->name("kategori");
 
+    Route::middleware(["auth:uye"])->group(function (){
+
+        Route::post('/logout', 'HomePageController@logout')->name('uye-logout');
+        Route::get ('/sepet', 'SepetController@index')->name('sepet');
+        Route::post('/sepetekle', 'SepetController@add')->name('sepetekle');
+        Route::post('/sepetsil', 'SepetController@destroy')->name('sepetsil');
+        Route::post('/sepetadetsil/{rowid}', 'SepetController@delete')->name('sepetadetsil');
+        Route::put ('/sepetguncelle/{rowid}', 'SepetController@update')->name('sepetguncelle');
     });
 
 });
