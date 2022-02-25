@@ -35,6 +35,7 @@ return array(
     'App\\Http\\Controllers\\Site\\HomePageController' => $baseDir . '/app/Http/Controllers/Site/HomePageController.php',
     'App\\Http\\Controllers\\Site\\KategoriController' => $baseDir . '/app/Http/Controllers/Site/KategoriController.php',
     'App\\Http\\Controllers\\Site\\Search' => $baseDir . '/app/Http/Controllers/Site/Search.php',
+    'App\\Http\\Controllers\\Site\\SepetController' => $baseDir . '/app/Http/Controllers/Site/SepetController.php',
     'App\\Http\\Controllers\\Site\\UrunlerPageController' => $baseDir . '/app/Http/Controllers/Site/UrunlerPageController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',

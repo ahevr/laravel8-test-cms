@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSepetUrunTable extends Migration
+class CreateSiparislerTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,16 @@ class CreateSepetUrunTable extends Migration
      */
     public function up()
     {
-        Schema::create('sepet_urun', function (Blueprint $table) {
+        Schema::create('siparisler', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger("sepet_id");
             $table->unsignedBigInteger("urun_id");
+            $table->unsignedBigInteger("kullanici_id");
             $table->integer("adet");
             $table->string("fiyat");
-            $table->string("durum",30);
+            $table->string("image");
+            $table->string("stok_kodu");
             $table->foreign('urun_id')->references('id')->on('urunler')->onDelete("cascade");
-            $table->foreign('sepet_id')->references('id')->on('sepet')->onDelete("cascade");
+            $table->foreign('kullanici_id')->references('id')->on('uyes')->onDelete("cascade");
             $table->timestamps();
         });
     }
@@ -33,6 +34,6 @@ class CreateSepetUrunTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sepet_urun');
+        Schema::dropIfExists('siparisler');
     }
 }

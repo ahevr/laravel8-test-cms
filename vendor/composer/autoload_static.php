@@ -626,6 +626,7 @@ class ComposerStaticInit2ce25a109bb3f23d920b62aca8ddb6b4
         'App\\Http\\Controllers\\Site\\HomePageController' => __DIR__ . '/../..' . '/app/Http/Controllers/Site/HomePageController.php',
         'App\\Http\\Controllers\\Site\\KategoriController' => __DIR__ . '/../..' . '/app/Http/Controllers/Site/KategoriController.php',
         'App\\Http\\Controllers\\Site\\Search' => __DIR__ . '/../..' . '/app/Http/Controllers/Site/Search.php',
+        'App\\Http\\Controllers\\Site\\SepetController' => __DIR__ . '/../..' . '/app/Http/Controllers/Site/SepetController.php',
         'App\\Http\\Controllers\\Site\\UrunlerPageController' => __DIR__ . '/../..' . '/app/Http/Controllers/Site/UrunlerPageController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',

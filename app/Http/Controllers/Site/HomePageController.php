@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin\KategorilerModel;
 use App\Models\Admin\UrunlerModel;
 use App\Models\Uye;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -45,7 +46,6 @@ class HomePageController extends Controller{
     public function logout(){
 
         Auth::guard("uye")->logout();
-
 
         return redirect("/")->with("toast_success","Çıkış Başarılı");
     }

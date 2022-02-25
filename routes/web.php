@@ -25,6 +25,8 @@ Route::group(["namespace"=>"site","as" => "site."],function (){
         Route::post('/sepetsil', 'SepetController@destroy')->name('sepetsil');
         Route::post('/sepetadetsil/{rowid}', 'SepetController@delete')->name('sepetadetsil');
         Route::put ('/sepetguncelle/{rowid}', 'SepetController@update')->name('sepetguncelle');
+        Route::get ("/siparisler","SiparislerController@index")->name("siparisler");
+        Route::post('/siparisekle', 'SiparislerController@add')->name('siparisekle');
     });
 
 });

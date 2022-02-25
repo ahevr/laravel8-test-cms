@@ -124,7 +124,7 @@
 
                 <div class="float-right">
                     <button type="button" class="btn btn-lg btn-default md-btn-flat mt-2 mr-3">Alışverişe Devam Et</button>
-                    <button type="button" class="btn btn-lg btn-primary mt-2">Sepeti Onayla</button>
+                    <a href="{{route("site.siparisler")}}" class="btn btn-lg btn-primary mt-2">Sepeti Onayla</a>
                 </div>
 
                 <form action="{{route("site.sepetsil")}}" method="POST">

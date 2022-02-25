@@ -4,12 +4,16 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin\KategorilerModel;
+use App\Models\Admin\SepetUrunModel;
+use App\Models\Admin\SiparislerModel;
 use App\Models\Admin\UrunlerModel;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SepetController extends Controller
 {
+
     public function index(){
 
         $categories       = KategorilerModel::where('parent_id', '=', 0)->get();
@@ -44,7 +48,6 @@ class SepetController extends Controller
 
     }
 
-
     public function delete($rowid){
 
         Cart::remove($rowid);
@@ -52,7 +55,6 @@ class SepetController extends Controller
         return  redirect()->route("site.sepet")->with("toast_success","Sepet Güncellendi");
 
     }
-
 
     public function destroy(){
 
