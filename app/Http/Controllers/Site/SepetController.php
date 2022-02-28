@@ -36,7 +36,7 @@ class SepetController extends Controller
             ]
         );
 
-        return  redirect()->route("site.index")->with("toast_success","Ürün Sepete Eklendi");
+        return redirect()->route("site.index")->with("toast_success","Ürün Sepete Eklendi");
 
     }
 

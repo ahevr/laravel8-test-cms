@@ -66,6 +66,7 @@
                 </div>
 
                 <hr class="mb-4">
+    {{--                <input type="hidden" name="id" value="{{$urunDetayGetir->id}}">--}}
                 <input type="submit" class="btn btn-outline-success" value="Continue to checkout">
             </form>
         </div>

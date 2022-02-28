@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin\KategorilerModel;
+use App\Models\Admin\OrderDetail;
 use App\Models\Admin\SiparislerModel;
 use App\Models\Admin\UrunlerModel;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -21,27 +22,32 @@ class SiparislerController extends Controller
 
     }
 
-    public function add(){
+    public function add(Request $request){
 
-            foreach(Cart::content() as $productCartItem) {
+        foreach(Cart::content() as $productCartItem) {
 
-                $x = array(
-                    "urun_id"      =>$productCartItem->id,
-                    "adet"         =>$productCartItem->qty,
-                    "fiyat"        =>$productCartItem->total,
-                    'image'        => $productCartItem->options->image,
-                    "stok_kodu"    => $productCartItem->options->stok,
-                    "kullanici_id" => Auth::guard("uye")->id(),
-                );
+            $x = array(
+                "urun_id"       => $productCartItem->id,
+                "adet"          => $productCartItem->qty,
+                "fiyat"         => $productCartItem->total,
+                'image'         => $productCartItem->options->image,
+                "stok_kodu"     => $productCartItem->options->stok,
+                "kullanici_id"  => Auth::guard("uye")->id(),
+            );
 
-                SiparislerModel::create($x);
-            }
+            SiparislerModel::create($x);
+        }
 
-            Cart::destroy();
+        $input = $request->all();
 
-            return  redirect()->route("site.index")->with("toast_success","Sipariş Başarılı Bir Şekilde Tamamlandı");
+        $input["siparis_id"] = SiparislerModel::all()->last()->id;
 
+        OrderDetail::create($input);
 
+        Cart::destroy();
+
+        return  redirect()->route("site.index")->with("toast_success","Sipariş Başarılı Bir Şekilde Tamamlandı");
 
     }
+
 }

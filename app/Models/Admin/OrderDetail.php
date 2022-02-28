@@ -5,9 +5,9 @@ namespace App\Models\Admin;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SepetUrunModel extends Model
+class OrderDetail extends Model
 {
-    protected $table = "sepet_urun";
+    protected $table = "order_detail";
 
     protected $guarded = [];
 }
