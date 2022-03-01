@@ -7,7 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class OrderDetail extends Model
 {
-    protected $table = "order_detail";
+    protected $table = "order";
 
     protected $guarded = [];
+
+//    public function siparisler(){
+//
+//        return $this->belongsTo(SiparislerModel::class);
+//
+//    }
+
 }

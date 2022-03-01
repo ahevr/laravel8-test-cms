@@ -108,14 +108,22 @@ Route::group(["namespace"=>"admin","prefix"=>"admin","as" => "admin."],function 
             Route::get ( "/status/{id}"     , "slider@status")->name("status");
         });
 
+        // Uye Route** //
+
         Route::group(["prefix" => "uyeler", "as"=>"uyeler."],function (){
             Route::get("/","uyeler@index")->name("index");
         });
 
+        // Admin Route** //
         Route::group(["prefix" => "user", "as"=>"user."],function (){
             Route::get("/","user@index")->name("index");
             Route::get ( "/ekleForm"        , "user@create")->name("ekleForm");
             Route::post( "/ekle"            , "DashboardController@create" )->name("ekle.post");
+        });
+
+        Route::group(["prefix"=>"siparisler","as"=>"siparisler."],function (){
+            Route::get("/","siparisler@index")->name("index");
+            Route::get("/inceleForm/{id}","siparisler@sipDetay")->name("inceleForm");
         });
 
 

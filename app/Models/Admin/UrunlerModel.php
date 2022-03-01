@@ -24,6 +24,27 @@ class UrunlerModel extends Model
 
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public function setImageAttribute($value){
         if($value) {
             $destination = "tema/admin/uploads/urunler/".$this->image;

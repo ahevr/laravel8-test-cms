@@ -46,6 +46,7 @@
                             <tr class="text-center">
                                 <th scope="col">#</th>
                                 <th scope="col">Görsel</th>
+{{--                                <th scope="col">Kategori</th>--}}
                                 <th scope="col">İsim</th>
                                 <th scope="col">Desc</th>
                                 <th scope="col">L.Fyt</th>
@@ -62,6 +63,7 @@
                                     <td>
                                         <img src="{{asset("tema/admin/uploads/urunler/".$row->image)}}" width="150" alt="{{$row->title}}">
                                     </td>
+{{--                                    <td><b class="text-danger">{{$row->renkler->renk_adi}}</b></td>--}}
                                     <td><a href="{{route("admin.urunler.inceleForm",$row->id)}}" style="color: black"><b>{{substr($row->title,0,30)}}....</b></a></td>
                                     <td>{{ substr($row->desc,0,35) ."......." }}</td>
                                     <td><b>{{number_format($row->fyt,2,',','.') }}</b> TL</td>
