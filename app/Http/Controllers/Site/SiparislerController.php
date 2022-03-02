@@ -10,6 +10,7 @@ use App\Models\Admin\UrunlerModel;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class SiparislerController extends Controller
 {
@@ -30,7 +31,6 @@ class SiparislerController extends Controller
 
         OrderDetail::create($input);
 
-
         if ($input){
 
             $sonid = OrderDetail::all()->last()->id;
@@ -38,7 +38,7 @@ class SiparislerController extends Controller
                 foreach(Cart::content() as $productCartItem) {
 
                     $x = array(
-                        "urunler_id"       => $productCartItem->id,
+                        "urunler_id"    => $productCartItem->id,
                         "adet"          => $productCartItem->qty,
                         "fiyat"         => $productCartItem->total,
                         'image'         => $productCartItem->options->image,
@@ -54,40 +54,9 @@ class SiparislerController extends Controller
 
                 return  redirect()->route("site.index")->with("toast_success","Sipariş Başarılı Bir Şekilde Tamamlandı");
 
+
+
         }
-
-
-
-
-
-
-
-
-
-//        foreach(Cart::content() as $productCartItem) {
-//
-//            $x = array(
-//                "urun_id"       => $productCartItem->id,
-//                "adet"          => $productCartItem->qty,
-//                "fiyat"         => $productCartItem->total,
-//                'image'         => $productCartItem->options->image,
-//                "stok_kodu"     => $productCartItem->options->stok,
-//                "kullanici_id"  => Auth::guard("uye")->id(),
-//            );
-//
-//            SiparislerModel::create($x);
-//        }
-//
-//        $input = $request->all();
-//
-//        $input["siparisler_id"] = SiparislerModel::all()->last()->id;
-//        $input["orderNo"] = rand(100000000,999999999);
-//
-//        OrderDetail::create($input);
-//
-//        Cart::destroy();
-//
-//        return  redirect()->route("site.index")->with("toast_success","Sipariş Başarılı Bir Şekilde Tamamlandı");
 
     }
 

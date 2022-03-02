@@ -14,12 +14,13 @@ class User extends Controller
 
         $data = UserModel::paginate(5);
 
-        $ayar     = AyalarModel::all()->first();
+        $ayar = AyalarModel::all()->first();
 
         return view("tema.admin.page.user.index",compact("data","ayar"));
     }
 
     public function create(){
+
         $ayar     = AyalarModel::all()->first();
 
         return view("tema.admin.page.user.create",compact("ayar"));
