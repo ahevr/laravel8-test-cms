@@ -18,5 +18,4 @@ class SiparislerModel extends Model
         return $this->belongsTo(UrunlerModel::class);
     }
 
-
 }

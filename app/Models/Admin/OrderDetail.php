@@ -11,10 +11,5 @@ class OrderDetail extends Model
 
     protected $guarded = [];
 
-//    public function siparisler(){
-//
-//        return $this->belongsTo(SiparislerModel::class);
-//
-//    }
 
 }

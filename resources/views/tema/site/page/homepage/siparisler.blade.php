@@ -9,6 +9,15 @@
     </div>
 @endsection
 @section("content")
+    @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <div class="row">
         <div class="col-md-4 order-md-2 mb-4">
             <h4 class="d-flex justify-content-between align-items-center mb-3">
@@ -61,12 +70,26 @@
                 </div>
 
                 <div class="mb-3">
+                    <label for="address">İl</label>
+                    <input type="text" class="form-control" name="il" >
+                </div>
+
+                <div class="mb-3">
+                    <label for="address">İl</label>
+                    <input type="text" class="form-control" name="ilce" >
+                </div>
+
+                <div class="mb-3">
                     <label for="address">Address</label>
                     <input type="text" class="form-control" name="adres" >
                 </div>
 
+                <div class="mb-3">
+                    <label for="address">Phone</label>
+                    <input type="text" class="form-control" name="telefon" >
+                </div>
+
                 <hr class="mb-4">
-    {{--                <input type="hidden" name="id" value="{{$urunDetayGetir->id}}">--}}
                 <input type="submit" class="btn btn-outline-success" value="Continue to checkout">
             </form>
         </div>

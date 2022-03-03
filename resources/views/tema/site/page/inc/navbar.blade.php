@@ -42,13 +42,21 @@
                     <button type="submit" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">Çıkış Yap</button>
                 </form>
             </div>
-        <div class="col-md-2">
-            <a class="btn btn-outline-dark font-weight-bolder py-2 px-5" href="{{route("site.sepet")}}">
-                <i class="bi-cart-fill me-1"></i>
-                Sepet
-                <span class="badge bg-dark text-white ms-1 rounded-pill">{{Cart::count()}}</span>
-            </a>
-        </div>
+            <div class="col-md-2">
+                <a class="btn btn-outline-dark font-weight-bolder py-2 px-5" href="{{route("site.sepet")}}">
+                    <i class="bi-cart-fill me-1"></i>
+                    Sepet
+                    <span class="badge bg-dark text-white ms-1 rounded-pill">{{Cart::count()}}</span>
+                </a>
+            </div>
+            <div class="col-md-2">
+                <a class="btn btn-outline-dark font-weight-bolder py-2 px-5" href="{{route("site.siparislerim",Auth::guard("uye")->user()->id)}}">
+{{--                <a class="btn btn-outline-dark font-weight-bolder py-2 px-5" href="{{route("site.siparislerim")}}">--}}
+                    <i class="bi-cart-fill me-1"></i>
+                    Siparişlerim
+                    <span class="badge bg-dark text-white ms-1 rounded-pill"></span>
+                </a>
+            </div>
 
         @else
             <div class="row mr-5">
