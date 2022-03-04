@@ -27,6 +27,9 @@ class SiparislerController extends Controller
 
     public function add(Request $request){
 
+
+//        dd(Cart::total());
+
         $request->validate([
 
             'adi' => 'required',
@@ -44,6 +47,7 @@ class SiparislerController extends Controller
         $input = $request->all();
         $input["orderNo"] = rand(100000000,999999999);
         $input["kullanici_id"] = Auth::guard("uye")->id();
+        $input["toplamfiyat"]  = Cart::total();
         OrderDetail::create($input);
 
         if ($input){
@@ -56,30 +60,31 @@ class SiparislerController extends Controller
                         "urunler_id"    => $productCartItem->id,
                         "adet"          => $productCartItem->qty,
                         "fiyat"         => $productCartItem->total,
-                        'image'         => $productCartItem->options->image,
+                        "image"         => $productCartItem->options->image,
                         "stok_kodu"     => $productCartItem->options->stok,
                         "kullanici_id"  => Auth::guard("uye")->id(),
-                        "siparisid"     => $sonid
+                        "siparisid"     => $sonid,
+                        "kategori"      => $productCartItem->options->kategori,
                     );
 
                     SiparislerModel::create($x);
                 }
 
 
-                $email = $request->email;
-                $array = [
-                    "adi"           => $request->adi,
-                    "urunler_id"    => $productCartItem->id,
-                    "adet"          => $productCartItem->qty,
-                    "fiyat"         => $productCartItem->total,
-                    'image'         => $productCartItem->options->image,
-                    "stok_kodu"     => $productCartItem->options->stok,
-                ];
-                Mail::send("tema.contactMail",$array,function ($message) use ($email){
-                    $message->from('destek@egesedefavize.com');
-                    $message->to($email);
-
-                });
+//                $email = $request->email;
+//                $array = [
+//                    "adi"           => $request->adi,
+//                    "urunler_id"    => $productCartItem->id,
+//                    "adet"          => $productCartItem->qty,
+//                    "fiyat"         => $productCartItem->total,
+//                    'image'         => $productCartItem->options->image,
+//                    "stok_kodu"     => $productCartItem->options->stok,
+//                ];
+//                Mail::send("tema.contactMail",$array,function ($message) use ($email){
+//                    $message->from('destek@egesedefavize.com');
+//                    $message->to($email);
+//
+//                });
 
             Cart::destroy();
 
@@ -115,6 +120,7 @@ class SiparislerController extends Controller
         $data = OrderDetail::where("id",$id)->get();
 
         $sip  = SiparislerModel::where("siparisid",$id)->get();
+
 
         $categories  = KategorilerModel::where('parent_id', '=', 0)->get();
 

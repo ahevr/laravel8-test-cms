@@ -61,19 +61,19 @@
         <table class="table table-bordered">
             <thead class="thead-dark">
             <tr class="text-center">
-                <th width="20">#</th>
                 <th width="20">Görsel</th>
                 <th width="20">Ürün Adı</th>
                 <th width="20">Sipariş Tarihi</th>
+                <th width="20">Birim Fiyat</th>
             </tr>
             </thead>
             <tbody>
             @foreach($sip as $row)
                 <tr class="text-center">
-                    <td>{{$row->id}}</td>
                     <td><img src="{{asset("tema/admin/uploads/urunler/".$row->image)}}" width="80" alt=""> </td>
-                    <td><b class="text-success">{{$row->urunler->title}}</b></td>
+                    <td><b class="text-success"><a href="{{route("site.urun-detay",$row->urunler->url)}}">{{$row->urunler->title}}</a></b></td>
                     <td>{{$row->created_at}}</td>
+                    <td>{{number_format($row->fiyat,2,',','.') }} TL</td>
                 </tr>
             @endforeach
             </tbody>

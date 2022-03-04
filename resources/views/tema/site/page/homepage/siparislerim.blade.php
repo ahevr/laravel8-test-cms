@@ -26,6 +26,7 @@
                                     <th width="20">Sipariş Tarihi</th>
                                     <th width="20">Siparis Adı ve Soyadı</th>
                                     <th width="20">Siparis Numarası</th>
+                                    <th width="20">Toplam Fiyat</th>
                                     <th width="20">Detaylar</th>
                                 </tr>
                                 </thead>
@@ -35,6 +36,7 @@
                                         <td>{{$row->created_at}}</td>
                                         <td>{{$row->adi}} {{$row->soyadi}}</td>
                                         <td>{{$row->orderNo}}</td>
+                                        <td>{{$row->toplamfiyat}} TL</td>
                                         <td> <a href="{{route("site.siparislerimDetay",$row->id)}}"
                                                 class="btn btn-sm btn-warning"><i class="fa fa-eye" aria-hidden="true"></i>
                                             </a>

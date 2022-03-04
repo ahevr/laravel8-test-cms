@@ -28,7 +28,7 @@ class SepetController extends Controller
 
         Cart::add($urun->id, $urun->title, 1, $urun->toplam_fyt, 0,
             [
-                'image'    => $urun->image,
+                "image"    => $urun->image,
                 "stok"     => $urun->stok_kodu,
                 "renkler"  => $urun->renkler->renk_adi,
                 "kategori" => $urun->kategoriler->name,

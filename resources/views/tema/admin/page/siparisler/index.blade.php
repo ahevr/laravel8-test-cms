@@ -17,24 +17,26 @@
                                 <th scope="col">Sipariş No</th>
                                 <th scope="col">Müşteri Adı Soyadı</th>
                                 <th scope="col">E Posta Adresi</th>
+                                <th scope="col">Toplam Fiyat</th>
                                 <th scope="col">Sipariş Tarihi</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($data as $row)
-                                <tr>
-                                    <th scope="row">{{$row->id}}</th>
-                                    <th scope="row">{{$row->orderNo}}</th>
-                                    <td>{{$row->adi." ".$row->soyadi}}</td>
-                                    <td>{{$row->email}}</td>
-                                    <td>{{$row->created_at}}</td>
-                                    <td>
-                                        <a href="{{route("admin.siparisler.inceleForm",$row->id)}}"
-                                           class="btn btn-sm btn-info"><i class="flaticon-eye"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                            @endforeach
+                                @foreach($data as $row)
+                                    <tr>
+                                        <th scope="row">{{$row->id}}</th>
+                                        <th scope="row">{{$row->orderNo}}</th>
+                                        <td>{{$row->adi." ".$row->soyadi}}</td>
+                                        <td>{{$row->email}}</td>
+                                        <td>{{$row->toplamfiyat}}</td>
+                                        <td>{{$row->created_at}}</td>
+                                        <td>
+                                            <a href="{{route("admin.siparisler.inceleForm",$row->id)}}"
+                                               class="btn btn-sm btn-info"><i class="flaticon-eye"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                         {{ $data->links() }}
