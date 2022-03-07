@@ -25,10 +25,15 @@ Route::group(["namespace"=>"site","as" => "site."],function (){
         Route::post('/sepetsil', 'SepetController@destroy')->name('sepetsil');
         Route::post('/sepetadetsil/{rowid}', 'SepetController@delete')->name('sepetadetsil');
         Route::put ('/sepetguncelle/{rowid}', 'SepetController@update')->name('sepetguncelle');
+
         Route::get ("/siparisler","SiparislerController@index")->name("siparisler");
         Route::post('/siparisekle', 'SiparislerController@add')->name('siparisekle');
         Route::get( '/siparislerim/{id}', 'SiparislerController@siparisDashboard')->name('siparislerim');
         Route::get( '/siparislerimdetay/{id}', 'SiparislerController@siparisDetayDashboard')->name('siparislerimDetay');
+
+        Route::get("/favoriler","FavorilerController@index")->name("favoriler");
+        Route::post("/favoriekle", 'FavorilerController@add')->name("favoriekle");
+        Route::get( "/favorilerim/{id}", 'FavorilerController@favorilerimDashboard')->name('favorilerim');
     });
 
 });

@@ -18,7 +18,7 @@ class Urunler extends Controller{
 
     public function index(){
 
-        $data = UrunlerModel::paginate(5);
+        $data = UrunlerModel::paginate(15);
 
         $ayar = AyalarModel::all()->first();
 
@@ -54,6 +54,7 @@ class Urunler extends Controller{
         $urunler->renkler_id     = $request->renkler_id;
         $urunler->kategoriler_id = $request->kategoriler_id;
         $urunler->stok_kodu      = $request->stok_kodu;
+        $urunler->barkod         = rand(100000,900000);
         $urunler->image          = $request->file('image');
 
         $urunler->save();

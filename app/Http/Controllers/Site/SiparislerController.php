@@ -27,18 +27,15 @@ class SiparislerController extends Controller
 
     public function add(Request $request){
 
-
-//        dd(Cart::total());
-
         $request->validate([
 
             'adi' => 'required',
             'soyadi' => 'required',
-            'email' => 'required|email',
+            'email' => 'required',
             'il' => 'required',
             'ilce' => 'required',
             'adres' => 'required',
-            'telefon' => 'required|digits:10|numeric',
+            'telefon' => 'required|digits:11|numeric',
 
         ]);
 
@@ -47,14 +44,14 @@ class SiparislerController extends Controller
         $input = $request->all();
         $input["orderNo"] = rand(100000000,999999999);
         $input["kullanici_id"] = Auth::guard("uye")->id();
-        $input["toplamfiyat"]  = Cart::total();
+        $input["toplamfiyat"]  = Cart::instance('shopping')->total();
         OrderDetail::create($input);
 
         if ($input){
 
             $sonid = OrderDetail::all()->last()->id;
 
-                foreach(Cart::content() as $productCartItem) {
+                foreach(Cart::instance('shopping')->content() as $productCartItem) {
 
                     $x = array(
                         "urunler_id"    => $productCartItem->id,
@@ -120,7 +117,6 @@ class SiparislerController extends Controller
         $data = OrderDetail::where("id",$id)->get();
 
         $sip  = SiparislerModel::where("siparisid",$id)->get();
-
 
         $categories  = KategorilerModel::where('parent_id', '=', 0)->get();
 

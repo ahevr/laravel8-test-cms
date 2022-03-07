@@ -22,10 +22,10 @@
         <div class="col-md-4 order-md-2 mb-4">
             <h4 class="d-flex justify-content-between align-items-center mb-3">
                 <span class="text-muted">Sipariş Özeti</span>
-                <span class="badge badge-secondary badge-pill">{{Cart::count()}} Adet</span>
+                <span class="badge badge-secondary badge-pill">{{Cart::instance('shopping')->count()}} Adet</span>
             </h4>
             <ul class="list-group mb-3">
-                @foreach(Cart::content() as $CartItem)
+                @foreach(Cart::instance('shopping')->content() as $CartItem)
                 <li class="list-group-item d-flex justify-content-between lh-condensed">
                     <div>
                         <h6 class="my-0">{{$CartItem->name}}</h6>
@@ -36,15 +36,15 @@
                 @endforeach
                 <li class="list-group-item d-flex justify-content-between">
                     <span>Ara Toplam</span>
-                    <strong>{{Cart::subtotal()}}</strong>
+                    <strong>{{Cart::instance('shopping')->subtotal()}}</strong>
                 </li>
                 <li class="list-group-item d-flex justify-content-between">
                     <span>KDV</span>
-                    <strong>{{Cart::tax()}}</strong>
+                    <strong>{{Cart::instance('shopping')->tax()}}</strong>
                 </li>
                 <li class="list-group-item d-flex justify-content-between">
                     <span>Genel Toplam</span>
-                    <strong>{{Cart::total()}}</strong>
+                    <strong>{{Cart::instance('shopping')->total()}}</strong>
                 </li>
             </ul>
         </div>

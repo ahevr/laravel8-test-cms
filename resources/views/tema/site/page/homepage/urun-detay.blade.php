@@ -32,6 +32,18 @@
                             <input type="hidden" name="id" value="{{$urunDetayGetir->id}}">
                             <input type="submit" class="btn btn-outline-success" value="Sepete Ekle">
                         </form>
+
+                        <form action="{{route("site.favoriekle")}}" method="POST">
+                            @csrf
+                            <input type="hidden" name="id" value="{{$urunDetayGetir->id}}">
+                            <div class="row">
+                                <div class="col-md-6 ml-4">
+                                    <button class="btn btn-danger">
+                                        <i class="fa fa-heart fa-1x" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

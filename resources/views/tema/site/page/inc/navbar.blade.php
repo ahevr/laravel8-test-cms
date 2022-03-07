@@ -33,46 +33,32 @@
 
 
 
-
         @if(Auth::guard("uye")->check())
-          Hoşgeldiniz {{Auth::guard("uye")->user()->name}}
-            <div class="col-md-3">
-                <form action="{{route("site.uye-logout")}}" method="post">
-                    @csrf
-                    <button type="submit" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">Çıkış Yap</button>
-                </form>
+          Hoşgeldiniz,<b> {{Auth::guard("uye")->user()->name}}</b>
+            <div class="dropdown col-md-2">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="bi bi-person-fill"></i>
+                    Profilim
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="{{route("site.siparislerim",Auth::guard("uye")->user()->id)}}">Siparişlerim</a>
+                    <a class="dropdown-item" href="{{route("site.favorilerim" ,Auth::guard("uye")->user()->id)}}">Favorilerim</a>
+                    <a class="dropdown-item" href="#">Kullanıcı Bilgilerim</a>
+                    <a class="dropdown-item" href="{{route("site.sepet")}}">Sepetim <span class="badge bg-dark text-white ms-1 rounded-pill">{{Cart::instance('shopping')->count()}}</span></a>
+                    <form action="{{route("site.uye-logout")}}" method="post">
+                        @csrf
+                        <button type="submit" class="dropdown-item" href="#">
+                            Çıkış Yap
+                        </button>
+                    </form>
+                </div>
             </div>
-            <div class="col-md-2">
-                <a class="btn btn-outline-dark font-weight-bolder py-2 px-5" href="{{route("site.sepet")}}">
-                    <i class="bi-cart-fill me-1"></i>
-                    Sepet
-                    <span class="badge bg-dark text-white ms-1 rounded-pill">{{Cart::count()}}</span>
-                </a>
-            </div>
-            <div class="col-md-2">
-                <a class="btn btn-outline-dark font-weight-bolder py-2 px-5" href="{{route("site.siparislerim",Auth::guard("uye")->user()->id)}}">
-{{--                <a class="btn btn-outline-dark font-weight-bolder py-2 px-5" href="{{route("site.siparislerim")}}">--}}
-                    <i class="bi-cart-fill me-1"></i>
-                    Siparişlerim
-                    <span class="badge bg-dark text-white ms-1 rounded-pill"></span>
-                </a>
-            </div>
-
         @else
             <div class="row mr-5">
                 <div class="col-md-3"><a href="{{route("site.uye-login")}}">Giriş</a></div>
                 <div class="col-md-3"><a href="{{route("site.uye-register")}}">Kayıt</a></div>
             </div>
         @endif
-
-
-
-
-
-
-
-
-
     <div class="co">
         <form style="display: flex;" action="{{route("site.search")}}">
             <input class="form-control mr-sm-2" type="search" placeholder="Ara.." name="keyword" aria-label="Search">

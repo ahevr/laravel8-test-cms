@@ -26,7 +26,7 @@ class SepetController extends Controller
 
         $urun = UrunlerModel::find(\request("id"));
 
-        Cart::add($urun->id, $urun->title, 1, $urun->toplam_fyt, 0,
+        Cart::instance('shopping')->add($urun->id, $urun->title, 1, $urun->toplam_fyt, 0,
             [
                 "image"    => $urun->image,
                 "stok"     => $urun->stok_kodu,
@@ -42,7 +42,7 @@ class SepetController extends Controller
 
     public function update($rowid){
 
-        Cart::update($rowid,\request("qty"));
+        Cart::instance('shopping')->update($rowid,\request("qty"));
 
         return response()->json(["success"=>true]);
 
@@ -50,7 +50,7 @@ class SepetController extends Controller
 
     public function delete($rowid){
 
-        Cart::remove($rowid);
+        Cart::instance('shopping')->remove($rowid);
 
         return  redirect()->route("site.sepet")->with("toast_success","Sepet Güncellendi");
 
@@ -58,7 +58,7 @@ class SepetController extends Controller
 
     public function destroy(){
 
-        Cart::destroy();
+        Cart::instance('shopping')->destroy();
 
         return  redirect()->route("site.index")->with("toast_success","Sepet Temizlendi");
     }

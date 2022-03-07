@@ -10,7 +10,7 @@
 @endsection
 @section("content")
 
-    @if(count(Cart::content())>0)
+    @if(count(Cart::instance('shopping')->content())>0)
     <style>
         .ui-w-100 {
             width: 100px !important;
@@ -53,7 +53,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                            @foreach(Cart::content() as $productCartItem)
+                            @foreach(Cart::instance('shopping')->content() as $productCartItem)
                         <tr>
                             <td class="p-4">
                                 <div class="media align-items-center">
