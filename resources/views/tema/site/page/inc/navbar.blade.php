@@ -36,27 +36,27 @@
         @if(Auth::guard("uye")->check())
           Hoşgeldiniz,<b> {{Auth::guard("uye")->user()->name}}</b>
             <div class="dropdown col-md-2">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="bi bi-person-fill"></i>
-                    Profilim
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="{{route("site.siparislerim",Auth::guard("uye")->user()->id)}}">Siparişlerim</a>
-                    <a class="dropdown-item" href="{{route("site.favorilerim" ,Auth::guard("uye")->user()->id)}}">Favorilerim</a>
-                    <a class="dropdown-item" href="#">Kullanıcı Bilgilerim</a>
-                    <a class="dropdown-item" href="{{route("site.sepet")}}">Sepetim <span class="badge bg-dark text-white ms-1 rounded-pill">{{Cart::instance('shopping')->count()}}</span></a>
-                    <form action="{{route("site.uye-logout")}}" method="post">
-                        @csrf
-                        <button type="submit" class="dropdown-item" href="#">
-                            Çıkış Yap
-                        </button>
-                    </form>
-                </div>
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="bi bi-person-fill"></i>
+                Profilim
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="{{route("site.siparislerim",Auth::guard("uye")->user()->id)}}">Siparişlerim</a>
+                <a class="dropdown-item" href="{{route("site.favorilerim" ,Auth::guard("uye")->user()->id)}}">Favorilerim</a>
+                <a class="dropdown-item" href="#">Kullanıcı Bilgilerim</a>
+                <a class="dropdown-item" href="{{route("site.sepet")}}">Sepetim <span class="badge bg-dark text-white ms-1 rounded-pill">{{Cart::instance('shopping')->count()}}</span></a>
+                <form action="{{route("site.uye-logout")}}" method="post">
+                    @csrf
+                    <button type="submit" class="dropdown-item" href="#">
+                        Çıkış Yap
+                    </button>
+                </form>
+            </div>
             </div>
         @else
-            <div class="row mr-5">
-                <div class="col-md-3"><a href="{{route("site.uye-login")}}">Giriş</a></div>
-                <div class="col-md-3"><a href="{{route("site.uye-register")}}">Kayıt</a></div>
+            <div class="d-flex mr-5">
+                <div class="col-md-6"><a style="color:black;text-decoration:none" href="{{route("site.uye-login")}}"><b>Giriş</b></a></div>
+                <div class="col-md-6"><a style="color:black;text-decoration:none" href="{{route("site.uye-register")}}"><b>Kayıt</b></a></div>
             </div>
         @endif
     <div class="co">

@@ -35,12 +35,11 @@ class HomePageController extends Controller{
     public function login(){
 
         return view("auth.login-user");
-
     }
+
     protected function register(){
 
         return view("auth.register-user");
-
     }
 
     public function logout(){
@@ -75,9 +74,12 @@ class HomePageController extends Controller{
         $save = $adminRegister->save();
 
         if ($save){
-            return redirect("admin/login");
+
+            return redirect("uye/login");
+
         } else {
-            return redirect("admin/login");
+
+            return redirect("uye/login");
         }
 
     }
@@ -113,6 +115,5 @@ class HomePageController extends Controller{
         return view("tema.site.page.homepage.index",compact("urunleriGetir","categories","toplamUrunSayisi"));
 
     }
-
 
 }

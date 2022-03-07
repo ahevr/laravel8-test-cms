@@ -28,15 +28,7 @@ class SiparislerController extends Controller
     public function add(Request $request){
 
         $request->validate([
-
-            'adi' => 'required',
-            'soyadi' => 'required',
-            'email' => 'required',
-            'il' => 'required',
-            'ilce' => 'required',
-            'adres' => 'required',
-            'telefon' => 'required|digits:11|numeric',
-
+            'adi'=>'required','soyadi'=>'required','email'=> 'required', 'il'=> 'required', 'ilce'=> 'required', 'adres'=>'required','telefon'=>'required|digits:11|numeric',
         ]);
 
 
