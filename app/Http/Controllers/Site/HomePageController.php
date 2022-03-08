@@ -16,7 +16,7 @@ class HomePageController extends Controller{
 
     public function check(Request $request){
 
-        $request->validate(["email"=>"required|email|exists:uyes,email"]);
+        $request->validate(["email"=>"required|email|exists:uyes,email","password"=>"required"]);
 
         $creds = $request->only("email","password");
 
@@ -54,6 +54,11 @@ class HomePageController extends Controller{
         $request->validate([
             "name" => "required|min:2|max:255",
             "email" => "required",
+            "surname" =>"required|min:2|max:255",
+            "phone" => "required|digits:11|numeric",
+            "il" => "required",
+            "ilce" => "required",
+            "adres" => "required",
             'password' => [
                 'required',
                 'string',
@@ -69,6 +74,11 @@ class HomePageController extends Controller{
 
         $adminRegister->name = $request->name;
         $adminRegister->email = $request->email;
+        $adminRegister->surname = $request->surname;
+        $adminRegister->phone = $request->phone;
+        $adminRegister->il = $request->il;
+        $adminRegister->ilce = $request->ilce;
+        $adminRegister->adres = $request->adres;
         $adminRegister->password =  Hash::make($request->password);
 
         $save = $adminRegister->save();

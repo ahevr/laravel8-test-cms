@@ -25,8 +25,13 @@ class Uye extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'surname',
         'email',
         'password',
+        'phone',
+        'il',
+        'ilce',
+        'adres'
     ];
 
     /**

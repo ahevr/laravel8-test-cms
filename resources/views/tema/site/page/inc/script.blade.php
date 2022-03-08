@@ -4,6 +4,50 @@
 <script src="{{asset("tema/site")}}/js/scripts.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
+
+
+<script>
+    $('.dontAddToCart').click(function(){
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
+        Toast.fire({
+            icon: 'error',
+            title: 'Ürün Sepete Eklemek İçin Lütfen Giriş Yapın !'
+        })
+    });
+</script>
+
+<script>
+    $('.dontAddToFav').click(function(){
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
+        Toast.fire({
+            icon: 'error',
+            title: 'Ürün Favorilere Eklemek İçin Lütfen Giriş Yapın !'
+        })
+    });
+</script>
+
 <script>
     $("#sort").on('change',function () {
         this.form.submit();

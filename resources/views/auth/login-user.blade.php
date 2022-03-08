@@ -33,6 +33,7 @@
             </div>
             <div class="form-group">
                 <input class="form-control h-auto text-white bg-white-o-5 rounded-pill border-0 py-4 px-8" type="password" placeholder="Password" name="password" />
+                <span class="text-danger">@error("email"){{$message}}@enderror</span>
             </div>
 
             <div class="form-group text-center mt-10">

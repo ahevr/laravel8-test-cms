@@ -11,6 +11,7 @@ use App\Models\Admin\RenklerModel;
 use App\Models\Admin\UrunlerImageModel;
 use App\Models\Admin\UrunlerModel;
 //use Faker\Core\File;
+use App\Models\Uye;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -276,11 +277,11 @@ class Urunler extends Controller{
 
     public function review($id){
 
-        $renk = RenklerModel::all();
+        $renk     = RenklerModel::all();
 
         $kategori = KategorilerModel::all();
 
-        $data = UrunlerModel::where("id",$id)->first();
+        $data     = UrunlerModel::where("id",$id)->first();
 
         $ayar     = AyalarModel::all()->first();
 

@@ -43,7 +43,7 @@
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <a class="dropdown-item" href="{{route("site.siparislerim",Auth::guard("uye")->user()->id)}}">Siparişlerim</a>
                 <a class="dropdown-item" href="{{route("site.favorilerim" ,Auth::guard("uye")->user()->id)}}">Favorilerim</a>
-                <a class="dropdown-item" href="#">Kullanıcı Bilgilerim</a>
+                <a class="dropdown-item" href="{{route("site.kullanicibilgilerim",Auth::guard("uye")->user()->id)}}">Kullanıcı Bilgilerim</a>
                 <a class="dropdown-item" href="{{route("site.sepet")}}">Sepetim <span class="badge bg-dark text-white ms-1 rounded-pill">{{Cart::instance('shopping')->count()}}</span></a>
                 <form action="{{route("site.uye-logout")}}" method="post">
                     @csrf

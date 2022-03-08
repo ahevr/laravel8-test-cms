@@ -31,8 +31,6 @@ class SiparislerController extends Controller
             'adi'=>'required','soyadi'=>'required','email'=> 'required', 'il'=> 'required', 'ilce'=> 'required', 'adres'=>'required','telefon'=>'required|digits:11|numeric',
         ]);
 
-
-
         $input = $request->all();
         $input["orderNo"] = rand(100000000,999999999);
         $input["kullanici_id"] = Auth::guard("uye")->id();
@@ -59,7 +57,7 @@ class SiparislerController extends Controller
                     SiparislerModel::create($x);
                 }
 
-
+// siparişi mail gönderme //
 //                $email = $request->email;
 //                $array = [
 //                    "adi"           => $request->adi,
@@ -74,11 +72,11 @@ class SiparislerController extends Controller
 //                    $message->to($email);
 //
 //                });
+//# siparişi mail gönderme //
 
             Cart::destroy();
 
             return  redirect()->route("site.index")->with("toast_success","Sipariş Başarılı Bir Şekilde Tamamlandı");
-
 
         } else {
 
@@ -97,7 +95,7 @@ class SiparislerController extends Controller
 
         $data = OrderDetail::where("kullanici_id",$id)->first();
 
-        $categories       = KategorilerModel::where('parent_id', '=', 0)->get();
+        $categories = KategorilerModel::where('parent_id', '=', 0)->get();
 
         return view("tema.site.page.homepage.siparislerim",compact("ayar","sip","data","categories"));
 
@@ -110,15 +108,11 @@ class SiparislerController extends Controller
 
         $sip  = SiparislerModel::where("siparisid",$id)->get();
 
-        $categories  = KategorilerModel::where('parent_id', '=', 0)->get();
+        $categories = KategorilerModel::where('parent_id', '=', 0)->get();
 
         $ayar = AyalarModel::all()->first();
 
         return view("tema.site.page.homepage.siparislerimDetay",compact("ayar","data","categories","sip"));
     }
-
-
-
-
 
 }

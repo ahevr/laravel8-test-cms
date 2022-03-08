@@ -34,6 +34,10 @@ Route::group(["namespace"=>"site","as" => "site."],function (){
         Route::get("/favoriler","FavorilerController@index")->name("favoriler");
         Route::post("/favoriekle", 'FavorilerController@add')->name("favoriekle");
         Route::get( "/favorilerim/{id}", 'FavorilerController@favorilerimDashboard')->name('favorilerim');
+
+        Route::get("/kullanici","KullaniciController@index")->name("kullanici");
+        Route::get("/kullaniciBilgilerim/{id}", 'KullaniciController@info')->name('kullanicibilgilerim');
+        Route::post( "/kullaniciBilgileriduzenle/{id}" , "KullaniciController@update")->name("kullaniciBilgileriduzenle");
     });
 
 });

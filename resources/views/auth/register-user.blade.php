@@ -26,10 +26,25 @@
         <form method="POST" action="{{ route('site.uye-register') }}">
             @csrf
             <div class="form-group">
-                <input class="form-control h-auto text-white bg-white-o-5 rounded-pill border-0 py-4 px-8" type="text" placeholder="Ad Soyad" name="name" autocomplete="off" />
+                <input class="form-control h-auto text-white bg-white-o-5 rounded-pill border-0 py-4 px-8" type="text" placeholder="Ad" name="name" autocomplete="off" />
+            </div>
+            <div class="form-group">
+                <input class="form-control h-auto text-white bg-white-o-5 rounded-pill border-0 py-4 px-8" type="text" placeholder="Soyad" name="surname" autocomplete="off" />
             </div>
             <div class="form-group">
                 <input class="form-control h-auto text-white bg-white-o-5 rounded-pill border-0 py-4 px-8" type="text" placeholder="E-Posta" name="email" autocomplete="off" />
+            </div>
+            <div class="form-group">
+                <input class="form-control h-auto text-white bg-white-o-5 rounded-pill border-0 py-4 px-8" type="text" placeholder="Telefon" name="phone" autocomplete="off" />
+            </div>
+            <div class="form-group">
+                <input class="form-control h-auto text-white bg-white-o-5 rounded-pill border-0 py-4 px-8" type="text" placeholder="İl" name="il" autocomplete="off" />
+            </div>
+            <div class="form-group">
+                <input class="form-control h-auto text-white bg-white-o-5 rounded-pill border-0 py-4 px-8" type="text" placeholder="İlçe" name="ilce" autocomplete="off" />
+            </div>
+            <div class="form-group">
+                <input class="form-control h-auto text-white bg-white-o-5 rounded-pill border-0 py-4 px-8" type="text" placeholder="Adres" name="adres" autocomplete="off" />
             </div>
             <div class="form-group">
                 <input class="form-control h-auto text-white bg-white-o-5 rounded-pill border-0 py-4 px-8" type="text" placeholder="Şifre" name="password" autocomplete="off" />
