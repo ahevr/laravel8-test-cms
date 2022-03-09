@@ -58,12 +58,9 @@ class FavorilerController extends Controller
 
     }
 
-
     public function favorilerimDashboard($id){
 
         $fav = FavorilerModel::where("kullanici_id",$id)->get();
-
-
 
         $ayar = AyalarModel::all()->first();
 
@@ -72,6 +69,23 @@ class FavorilerController extends Controller
         $categories  = KategorilerModel::where('parent_id', '=', 0)->get();
 
         return view("tema.site.page.homepage.favoriler",compact("ayar","fav","data","categories"));
+
+    }
+
+    public function delete($id){
+
+
+        $favo = FavorilerModel::find($id);
+
+        $favo->delete();
+
+        return back()->with("toast_success","Ürün Favorilerden Çıkartıldı");
+
+
+
+//        $sil = FavorilerModel::where("id",$id)->delete();
+//
+//        return back()->with("toast_success","Ürün Favorilerden Çıkartıldı");
 
     }
 

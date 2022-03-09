@@ -10,25 +10,64 @@
 @endsection
 @section("content")
     <style>
-        .ui-w-100 {
-            width: 100px !important;
-            height: auto;
+        .favcard {
+            width: 250px;
+            border-radius: 10px
         }
 
-        .card{
-            box-shadow: 0 1px 15px 1px rgba(52,40,104,.08);
+        .card-img-top {
+            border-top-right-radius: 10px;
+            border-top-left-radius: 10px
         }
 
-        .ui-product-color {
-            display: inline-block;
-            overflow: hidden;
-            margin: .144em;
-            width: .875rem;
-            height: .875rem;
-            border-radius: 10rem;
-            -webkit-box-shadow: 0 0 0 1px rgba(0,0,0,0.15) inset;
-            box-shadow: 0 0 0 1px rgba(0,0,0,0.15) inset;
-            vertical-align: middle;
+        span.text-muted {
+            font-size: 12px
+        }
+
+        small.text-muted {
+            font-size: 8px
+        }
+
+        h5.mb-0 {
+            font-size: 1rem
+        }
+
+        small.ghj {
+            font-size: 9px
+        }
+
+        .mid {
+            background: #ECEDF1
+        }
+
+        h6.ml-1 {
+            font-size: 13px
+        }
+
+        small.key {
+            text-decoration: underline;
+            font-size: 9px;
+            cursor: pointer
+        }
+
+        .btn-danger {
+            color: #FFCBD2
+        }
+
+        .btn-danger:focus {
+            box-shadow: none
+        }
+
+        small.justify-content-center {
+            font-size: 9px;
+            cursor: pointer;
+            text-decoration: underline
+        }
+
+        @media screen and (max-width:600px) {
+            .col-sm-4 {
+                margin-bottom: 50px
+            }
         }
     </style>
     <div class="container px-3 my-5 clearfix">
@@ -37,31 +76,35 @@
             <div class="card-header">
                 <h2>FAVORİLERİM</h2>
             </div>
-
-            @if(count($fav) == 0 )
-                <h5 class="fw-bolder">Herhangi Bir Favorili Ürününüz Yok </h5>
-            @else
-            <div class="card-body">
-                <div class="row">
+            <div class="container-fluid d-flex justify-content-center">
+                <div class="row mt-5">
                     @foreach($fav as $row)
-                        <div class="col-md-3">
-                            <!-- Product image-->
-                            <a href="{{route("site.urun-detay",$row->urunler->url)}}">
-                                <img class="card-img-top" src="{{asset("tema/admin/uploads/urunler/".$row->image)}}" alt="..." />
-                            </a>
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder"> <b><a style="text-decoration: none;color: black" href="{{route("site.urun-detay",$row->urunler->url)}}">{{$row->urunler->title}}</a> </b> </h5>
-                                    <hr>
+                        <div class="col-sm-4">
+                            <div class="favcard"> <img src="{{asset("tema/admin/uploads/urunler/".$row->image)}}" class="card-img-top" width="100%">
+                                <div class="card-body pt-0 px-0">
+                                    <div class="d-flex flex-row justify-content-between mb-0 px-3"> <small class="text-muted mt-1">Fiyat</small>
+                                        <h6>{{number_format($row->fiyat,2,',','.')}} TL</h6>
+                                    </div>
+                                    <hr class="mt-2 mx-3">
+                                    <div class="d-flex flex-row px-3 pb-4">
+                                        <div class="text-center">
+                                            <h6 class="fw-bolder"> <b><a style="text-decoration: none;color: black" href="{{route("site.urun-detay",$row->urunler->url)}}">{{$row->urunler->title}}</a> </b> </h6>
+                                        </div>
+                                    </div>
+                                    <div class="mx-3 mt-3 mb-2">
+                                        <form action="{{route("site.favoriadetsil",$row->id)}}" method="POST">
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger btn-block">
+                                                <small>Favorilerimden Çıkart</small>
+                                            </button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     @endforeach
                 </div>
             </div>
-            @endif
         </div>
     </div>
 @endsection
