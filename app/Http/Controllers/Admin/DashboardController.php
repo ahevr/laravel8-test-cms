@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin\AyalarModel;
+use App\Models\Admin\KategorilerModel;
+use App\Models\Admin\OrderDetail;
+use App\Models\Admin\SiparislerModel;
+use App\Models\Admin\UrunlerModel;
 use App\Models\User;
 use App\Models\Uye;
 use Illuminate\Http\Request;
@@ -77,7 +81,15 @@ class DashboardController extends Controller
 
         $ayar = AyalarModel::all()->first();
 
-        return view("tema.admin.page.dashboard.index", compact("ayar"));
+        $uyecount = Uye::count();
+
+        $sipcount = OrderDetail::count();
+
+        $productcount = UrunlerModel::count();
+
+        $katcount = KategorilerModel::count();
+
+        return view("tema.admin.page.dashboard.index", compact("ayar","uyecount","sipcount","productcount","katcount"));
 
     }
 

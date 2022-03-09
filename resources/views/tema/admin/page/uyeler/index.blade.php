@@ -15,7 +15,10 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">İsim</th>
+                                <th scope="col">Soyisim</th>
                                 <th scope="col">Email</th>
+                                <th scope="col">Telefon</th>
+                                <th scope="col">Düzenle</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -23,7 +26,14 @@
                                 <tr>
                                     <th scope="row">{{$row->id}}</th>
                                     <td>{{$row->name}}</td>
+                                    <td>{{$row->surname}}</td>
                                     <td>{{$row->email}}</td>
+                                    <td>{{$row->phone}}</td>
+                                    <td>
+                                        <a href="{{route("admin.uyeler.duzenleForm",$row->id)}}"
+                                           class="btn btn-sm btn-primary"><i class="flaticon-edit"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>

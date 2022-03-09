@@ -20,25 +20,34 @@ Route::group(["namespace"=>"site","as" => "site."],function (){
     Route::middleware(["auth:uye"])->group(function (){
 
         Route::post('/logout', 'HomePageController@logout')->name('uye-logout');
+
+        // Sepet Route** //
         Route::get ('/sepet', 'SepetController@index')->name('sepet');
         Route::post('/sepetekle', 'SepetController@add')->name('sepetekle');
         Route::post('/sepetsil', 'SepetController@destroy')->name('sepetsil');
         Route::post('/sepetadetsil/{rowid}', 'SepetController@delete')->name('sepetadetsil');
         Route::put ('/sepetguncelle/{rowid}', 'SepetController@update')->name('sepetguncelle');
 
+
+        // Siparişlerim Route** //
         Route::get ("/siparisler","SiparislerController@index")->name("siparisler");
         Route::post('/siparisekle', 'SiparislerController@add')->name('siparisekle');
         Route::get( '/siparislerim/{id}', 'SiparislerController@siparisDashboard')->name('siparislerim');
         Route::get( '/siparislerimdetay/{id}', 'SiparislerController@siparisDetayDashboard')->name('siparislerimDetay');
 
+
+        // Favoriler Route** //
         Route::get("/favoriler","FavorilerController@index")->name("favoriler");
         Route::post("/favoriekle", 'FavorilerController@add')->name("favoriekle");
         Route::get( "/favorilerim/{id}", 'FavorilerController@favorilerimDashboard')->name('favorilerim');
         Route::post('/favoriadetsil/{rowid}', 'FavorilerController@delete')->name('favoriadetsil');
 
+
+        // Kullanıcı Bilgi Route** //
         Route::get("/kullanici","KullaniciController@index")->name("kullanici");
         Route::get("/kullaniciBilgilerim/{id}", 'KullaniciController@info')->name('kullanicibilgilerim');
-        Route::post( "/kullaniciBilgileriduzenle/{id}" , "KullaniciController@update")->name("kullaniciBilgileriduzenle");
+        Route::post("/kullaniciBilgileriduzenle/{id}" , "KullaniciController@update")->name("kullaniciBilgileriduzenle");
+
     });
 
 });
@@ -124,6 +133,8 @@ Route::group(["namespace"=>"admin","prefix"=>"admin","as" => "admin."],function 
 
         Route::group(["prefix" => "uyeler", "as"=>"uyeler."],function (){
             Route::get("/","uyeler@index")->name("index");
+            Route::get("/duzenleForm/{id}","uyeler@edit")->name("duzenleForm");
+            Route::post( "/duzenle/{id}"    , "uyeler@update")->name("duzenleuye");
         });
 
         // Admin Route** //
