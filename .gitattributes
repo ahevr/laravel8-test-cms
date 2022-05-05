@@ -1,5 +1,5 @@
-*.blade.php diff=html
-*.css diff=css
+*.blade.php diff=php
+*.css linguist-detectable=false
 *.html linguist-detectable=false
 *.js linguist-detectable=false
 *.md diff=markdown
