@@ -1,4 +1,4 @@
-*.blade.php diff=php
+*.blade.php diff=html
 *.css linguist-detectable=false
 *.html linguist-detectable=false
 *.js linguist-detectable=false
